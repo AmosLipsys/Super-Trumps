@@ -1,11 +1,10 @@
 package SuperTrumpsGame;
 
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class MainMenu {
     public static void main(String args[]){
+
         showWelcome();
         int userChoice = 0;
         String userChoiceStr;
@@ -64,11 +63,14 @@ public class MainMenu {
         int numPlayers = getNumPlayers();
         SuperTrumpsGame game = new SuperTrumpsGame(numPlayers);
         game.selectDealer();
+        game.displayDealer();
+        game.dealRandomCards();
+        game.displayDealer();
     }
 
     // Get number of players from user min = 2, max = 5
     private static int getNumPlayers(){
-        int numPlayers = -1, min = 2, max = 5;
+        int numPlayers = -1, min = 3, max = 5;
         while (numPlayers < min || numPlayers > max) {
             System.out.println("\n\nChoose how many players are allowed to play:");
             Scanner scan = new Scanner(System.in);
