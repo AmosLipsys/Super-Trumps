@@ -1,0 +1,976 @@
+{
+  "cards": [
+    {
+      "fileName": "Slide01.jpg",
+      "imageName": "Slide01",
+      "title": "Quartz",
+      "chemistry": "SiO_2",
+      "classification": "tectosilicate",
+      "crystal_system": "hexagonal",
+      "occurrence": [
+        "igneous",
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "7",
+      "specific_gravity": "2.65",
+      "cleavage": "poor/none",
+      "crustal_abundance": "high",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide02.jpg",
+      "imageName": "Slide02",
+      "title": "Plagioclase",
+      "chemistry": "Na Al Si_3 O_8 - Ca Al_2 Si_2 O_8",
+      "classification": "tectosilicate",
+      "crystal_system": "triclinic",
+      "occurrence": [
+        "igneous",
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "6-6.5",
+      "specific_gravity": "2.6-2.8",
+      "cleavage": "1 perfect, 1 good",
+      "crustal_abundance": "very high",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide03.jpg",
+      "imageName": "Slide03",
+      "title": "Orthoclase",
+      "chemistry": "K Al Si_3 O_3",
+      "classification": "tectosilicate",
+      "crystal_system": "monoclinic",
+      "occurrence": [
+        "igneous",
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "6-6.5",
+      "specific_gravity": "2.5-2.6",
+      "cleavage": "1 perfect, 1 good",
+      "crustal_abundance": "high",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide04.jpg",
+      "imageName": "Slide04",
+      "title": "Biotite",
+      "chemistry": "K(Fe, Mg)_3 Al Si_3 O_10 (OH)_2 ",
+      "classification": "phyllosilicate",
+      "crystal_system": "monoclinic",
+      "occurrence": [
+        "igneous",
+        "metamorphic"
+      ],
+      "hardness": "2.5-3",
+      "specific_gravity": "2.7-3.3",
+      "cleavage": "1 perfect",
+      "crustal_abundance": "moderate",
+      "economic_value": "low"
+    },
+    {
+      "fileName": "Slide05.jpg",
+      "imageName": "Slide05",
+      "title": "Muscovite",
+      "chemistry": "K Al_3 Si_3 O_10 (O H)_2",
+      "classification": "phyllosilicate",
+      "crystal_system": "monoclinic",
+      "occurrence": [
+        "igneous",
+        "metamorphic"
+      ],
+      "hardness": "2.5-3",
+      "specific_gravity": "2.8-2.9",
+      "cleavage": "1 perfect",
+      "crustal_abundance": "moderate",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide06.jpg",
+      "imageName": "Slide06",
+      "title": "Hornblende",
+      "chemistry": "Ca_2 (Mg, Fe)_4 Al_2 Si_7 O_22 (OH)_2",
+      "classification": "inosilicate",
+      "crystal_system": "monoclinic",
+      "occurrence": [
+        "igneous",
+        "metamorphic"
+      ],
+      "hardness": "5-6",
+      "specific_gravity": "3.0-3.5",
+      "cleavage": "2 good",
+      "crustal_abundance": "moderate",
+      "economic_value": "trivial"
+    },
+    {
+      "fileName": "Slide07.jpg",
+      "imageName": "Slide07",
+      "title": "Actinolite",
+      "chemistry": "Ca_2 (Mg, Fe)_5 Si_8 O_22 (OH)_2",
+      "classification": "inosilicate",
+      "crystal_system": "monoclinic",
+      "occurrence": [
+        "metamorphic"
+      ],
+      "hardness": "5-6",
+      "specific_gravity": "3.0-3.5",
+      "cleavage": "2 good",
+      "crustal_abundance": "low",
+      "economic_value": "low"
+    },
+    {
+      "fileName": "Slide08.jpg",
+      "imageName": "Slide08",
+      "title": "Glaucophane",
+      "chemistry": "Na_2 (Mg, Fe)_3 Al_2 Si_8 O_22 (OH)_2 ",
+      "classification": "inosilicate",
+      "crystal_system": "monoclinic",
+      "occurrence": [
+        "metamorphic"
+      ],
+      "hardness": "6",
+      "specific_gravity": "3.0-3.2",
+      "cleavage": "2 good",
+      "crustal_abundance": "low",
+      "economic_value": "trivial"
+    },
+    {
+      "fileName": "Slide09.jpg",
+      "imageName": "Slide09",
+      "title": "Olivine",
+      "chemistry": "(Mg, Fe)_2 Si O_4",
+      "classification": "nesosilicate",
+      "crystal_system": "orthorhombic",
+      "occurrence": [
+        "igneous",
+        "metamorphic",
+        "mantle"
+      ],
+      "hardness": "6.5-7",
+      "specific_gravity": "3.2-4.4",
+      "cleavage": "2 poor",
+      "crustal_abundance": "high",
+      "economic_value": "low"
+    },
+    {
+      "fileName": "Slide10.jpg",
+      "imageName": "Slide10",
+      "title": "Garnet",
+      "chemistry": "(Fe, Mg, Ca, Mn)_3 (Al, Fe)_2 Si_3 O_12",
+      "classification": "nesosilicate",
+      "crystal_system": "isometric",
+      "occurrence": [
+        "igneous",
+        "metamorphic",
+        "mantle"
+      ],
+      "hardness": "6-7.5",
+      "specific_gravity": "3.5-4.3",
+      "cleavage": "none",
+      "crustal_abundance": "moderate",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide11.jpg",
+      "imageName": "Slide11",
+      "title": "Titanite",
+      "chemistry": "Ca Ti Si O_5",
+      "classification": "nesosilicate",
+      "crystal_system": "monoclinic",
+      "occurrence": [
+        "igneous",
+        "metamorphic"
+      ],
+      "hardness": "5-5.5",
+      "specific_gravity": "3.4-3.6",
+      "cleavage": "3 good",
+      "crustal_abundance": "low",
+      "economic_value": "low"
+    },
+    {
+      "fileName": "Slide12.jpg",
+      "imageName": "Slide12",
+      "title": "Zircon",
+      "chemistry": "Zr Si O_4",
+      "classification": "nesosilicate",
+      "crystal_system": "tetragonal",
+      "occurrence": [
+        "igneous",
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "7.5",
+      "specific_gravity": "4.6-4.7",
+      "cleavage": "2 poor",
+      "crustal_abundance": "trace",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide13.jpg",
+      "imageName": "Slide13",
+      "title": "Augite",
+      "chemistry": "Ca (Mg, Fe) Si_2 O_6 ",
+      "classification": "inosilicate",
+      "crystal_system": "monoclinic",
+      "occurrence": [
+        "igneous",
+        "metamorphic"
+      ],
+      "hardness": "5.5-6.5",
+      "specific_gravity": "3.2-3.6",
+      "cleavage": "2 good",
+      "crustal_abundance": "high",
+      "economic_value": "trivial"
+    },
+    {
+      "fileName": "Slide14.jpg",
+      "imageName": "Slide14",
+      "title": "Orthopyroxene",
+      "chemistry": "(Mg, Fe)_2 Si_2 O_6 ",
+      "classification": "inosilicate",
+      "crystal_system": "orthorhombic",
+      "occurrence": [
+        "igneous",
+        "metamorphic",
+        "mantle"
+      ],
+      "hardness": "5-6",
+      "specific_gravity": "3.2-3.9",
+      "cleavage": "2 good",
+      "crustal_abundance": "high",
+      "economic_value": "trivial"
+    },
+    {
+      "fileName": "Slide15.jpg",
+      "imageName": "Slide15",
+      "title": "Chlorite",
+      "chemistry": "(Mg, Fe)_5 Al_2 Si_3 O_10 (OH)_8",
+      "classification": "phyllosilicate",
+      "crystal_system": "monoclinic",
+      "occurrence": [
+        "metamorphic"
+      ],
+      "hardness": "2-3",
+      "specific_gravity": "2.6-3.3",
+      "cleavage": "1 perfect",
+      "crustal_abundance": "moderate",
+      "economic_value": "low"
+    },
+    {
+      "fileName": "Slide16.jpg",
+      "imageName": "Slide16",
+      "title": "Antigorite",
+      "chemistry": "(Mg, Fe)_3 Si_2 O_5 (OH)_4",
+      "classification": "phyllosilicate",
+      "crystal_system": "monoclinic",
+      "occurrence": [
+        "metamorphic",
+        "mantle"
+      ],
+      "hardness": "3.5-4",
+      "specific_gravity": "2.6",
+      "cleavage": "1 perfect",
+      "crustal_abundance": "low",
+      "economic_value": "low"
+    },
+    {
+      "fileName": "Slide17.jpg",
+      "imageName": "Slide17",
+      "title": "Talc",
+      "chemistry": "Mg_3 Si_4 O_10 (OH)_2",
+      "classification": "phyllosilicate",
+      "crystal_system": "monoclinic",
+      "occurrence": [
+        "metamorphic"
+      ],
+      "hardness": "1",
+      "specific_gravity": "2.6-2.8",
+      "cleavage": "1 perfect",
+      "crustal_abundance": "low",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide18.jpg",
+      "imageName": "Slide18",
+      "title": "Kaolinite",
+      "chemistry": "Al_2 Si_2 O_5 (OH)_4",
+      "classification": "phyllosilicate",
+      "crystal_system": "triclinic",
+      "occurrence": [
+        "sedimentary"
+      ],
+      "hardness": "1.5-2.5",
+      "specific_gravity": "2.6-2.7",
+      "cleavage": "1 perfect",
+      "crustal_abundance": "moderate",
+      "economic_value": "high"
+    },
+    {
+      "fileName": "Slide19.jpg",
+      "imageName": "Slide19",
+      "title": "Andalusite",
+      "chemistry": "Al_2 Si O_5",
+      "classification": "nesosilicate",
+      "crystal_system": "orthorhombic",
+      "occurrence": [
+        "metamorphic"
+      ],
+      "hardness": "6.5-7",
+      "specific_gravity": "3.15",
+      "cleavage": "2 good",
+      "crustal_abundance": "low",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide20.jpg",
+      "imageName": "Slide20",
+      "title": "Kyanite",
+      "chemistry": "Al_2 Si O_5",
+      "classification": "nesosilicate",
+      "crystal_system": "triclinic",
+      "occurrence": [
+        "metamorphic"
+      ],
+      "hardness": "5.5-7",
+      "specific_gravity": "3.5-3.7",
+      "cleavage": "1 perfect, 1 good",
+      "crustal_abundance": "trace",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide21.jpg",
+      "imageName": "Slide21",
+      "title": "Sillimanite",
+      "chemistry": "Al_2 Si O_5",
+      "classification": "nesosilicate",
+      "crystal_system": "orthorhombic",
+      "occurrence": [
+        "igneous",
+        "metamorphic"
+      ],
+      "hardness": "6.5-7.5",
+      "specific_gravity": "3.25",
+      "cleavage": "1 perfect, 1 good",
+      "crustal_abundance": "low",
+      "economic_value": "low"
+    },
+    {
+      "fileName": "Slide22.jpg",
+      "imageName": "Slide22",
+      "title": "Staurolite",
+      "chemistry": "(Fe, Mg)_2 Al_9 Si_4 O_22 (OH)_2",
+      "classification": "nesosilicate",
+      "crystal_system": "monoclinic",
+      "occurrence": [
+        "metamorphic"
+      ],
+      "hardness": "7",
+      "specific_gravity": "3.7-3.8",
+      "cleavage": "1 good",
+      "crustal_abundance": "trace",
+      "economic_value": "low"
+    },
+    {
+      "fileName": "Slide23.jpg",
+      "imageName": "Slide23",
+      "title": "Epidote",
+      "chemistry": "Ca_2 (Al, Fe)_3 Si_3 O_12 (OH)",
+      "classification": "sorosilicate",
+      "crystal_system": "monoclinic",
+      "occurrence": [
+        "igneous",
+        "metamorphic"
+      ],
+      "hardness": "6 - 6.5",
+      "specific_gravity": "3.2 - 3.5",
+      "cleavage": "1 perfect",
+      "crustal_abundance": "moderate",
+      "economic_value": "trivial"
+    },
+    {
+      "fileName": "Slide24.jpg",
+      "imageName": "Slide24",
+      "title": "Tourmaline",
+      "chemistry": "Na (Mg, Fe)_3 Al_6 B_3 Si_6 O_27 (OH)_4",
+      "classification": "cyclosilicate",
+      "crystal_system": "hexagonal",
+      "occurrence": [
+        "metamorphic"
+      ],
+      "hardness": "7 - 7.5",
+      "specific_gravity": "3.0 - 3.2",
+      "cleavage": "2 poor",
+      "crustal_abundance": "trace",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide25.jpg",
+      "imageName": "Slide25",
+      "title": "Topaz",
+      "chemistry": "Al_2 Si O_4 (F, OH)_2",
+      "classification": "nesosilicate",
+      "crystal_system": "orthorhombic",
+      "occurrence": [
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "8",
+      "specific_gravity": "3.5 - 3.6",
+      "cleavage": "1 perfect",
+      "crustal_abundance": "ultratrace",
+      "economic_value": "low"
+    },
+    {
+      "fileName": "Slide26.jpg",
+      "imageName": "Slide26",
+      "title": "Beryl",
+      "chemistry": "Be_3 Al_2 Si_6 O_18",
+      "classification": "cyclosilicate",
+      "crystal_system": "hexagonal",
+      "occurrence": [
+        "igneous",
+        "metamorphic"
+      ],
+      "hardness": "7.5 - 8",
+      "specific_gravity": "2.6 - 2.9",
+      "cleavage": "1 poor",
+      "crustal_abundance": "trace",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide27.jpg",
+      "imageName": "Slide27",
+      "title": "Pyrite",
+      "chemistry": "Fe S_2",
+      "classification": "sulfide",
+      "crystal_system": "isometric",
+      "occurrence": [
+        "igneous",
+        "metamorphic"
+      ],
+      "hardness": "6 - 6.5",
+      "specific_gravity": "5",
+      "cleavage": "2 poor",
+      "crustal_abundance": "low",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide28.jpg",
+      "imageName": "Slide28",
+      "title": "Pyrrhotite",
+      "chemistry": "Fe_{1-x} S",
+      "classification": "sulfide",
+      "crystal_system": "monoclinic",
+      "occurrence": [
+        "igneous",
+        "metamorphic"
+      ],
+      "hardness": "3.5 4.5",
+      "specific_gravity": "4.6",
+      "cleavage": "none",
+      "crustal_abundance": "low",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide29.jpg",
+      "imageName": "Slide29",
+      "title": "Chalcopyrite",
+      "chemistry": "Cu Fe S_2",
+      "classification": "sulfide",
+      "crystal_system": "tetragonal",
+      "occurrence": [
+        "igneous",
+        "metamorphic"
+      ],
+      "hardness": "3.5 - 4",
+      "specific_gravity": "4.1 - 4.3",
+      "cleavage": "2 poor",
+      "crustal_abundance": "low",
+      "economic_value": "very high"
+    },
+    {
+      "fileName": "Slide30.jpg",
+      "imageName": "Slide30",
+      "title": "Galena",
+      "chemistry": "Pb S",
+      "classification": "sulfide",
+      "crystal_system": "isometric",
+      "occurrence": [
+        "metamorphic"
+      ],
+      "hardness": "2.5",
+      "specific_gravity": "7.5 - 7.6",
+      "cleavage": "3 perfect",
+      "crustal_abundance": "trace",
+      "economic_value": "high"
+    },
+    {
+      "fileName": "Slide31.jpg",
+      "imageName": "Slide31",
+      "title": "Sphalerite",
+      "chemistry": "(Zn, Fe) S",
+      "classification": "sulfide",
+      "crystal_system": "isometric",
+      "occurrence": [
+        "metamorphic"
+      ],
+      "hardness": "3.5 - 4",
+      "specific_gravity": "3.9 - 4.1",
+      "cleavage": "6 perfect",
+      "crustal_abundance": "trace",
+      "economic_value": "high"
+    },
+    {
+      "fileName": "Slide32.jpg",
+      "imageName": "Slide32",
+      "title": "Molybdenite",
+      "chemistry": "Mo S_2",
+      "classification": "sulfide",
+      "crystal_system": "hexagonal",
+      "occurrence": [
+        "igneous",
+        "metamorphic"
+      ],
+      "hardness": "1 - 1.5",
+      "specific_gravity": "4.7",
+      "cleavage": "1 perfect",
+      "crustal_abundance": "trace",
+      "economic_value": "high"
+    },
+    {
+      "fileName": "Slide33.jpg",
+      "imageName": "Slide33",
+      "title": "Gold",
+      "chemistry": "Au",
+      "classification": "native element",
+      "crystal_system": "isometric",
+      "occurrence": [
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "2.5 - 3",
+      "specific_gravity": "19.3",
+      "cleavage": "none",
+      "crustal_abundance": "ultratrace",
+      "economic_value": "I'm rich!"
+    },
+    {
+      "fileName": "Slide34.jpg",
+      "imageName": "Slide34",
+      "title": "Diamond",
+      "chemistry": "C",
+      "classification": "native element",
+      "crystal_system": "isometric",
+      "occurrence": [
+        "igneous",
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "10",
+      "specific_gravity": "3.5",
+      "cleavage": "4 perfect",
+      "crustal_abundance": "ultratrace",
+      "economic_value": "I'm rich!"
+    },
+    {
+      "fileName": "Slide35.jpg",
+      "imageName": "Slide35",
+      "title": "Graphite",
+      "chemistry": "C",
+      "classification": "native element",
+      "crystal_system": "hexagonal",
+      "occurrence": [
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "1 - 2",
+      "specific_gravity": "2.2",
+      "cleavage": "1 perfect",
+      "crustal_abundance": "trace",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide36.jpg",
+      "imageName": "Slide36",
+      "title": "Halite",
+      "chemistry": "Na Cl",
+      "classification": "halide",
+      "crystal_system": "isometric",
+      "occurrence": [
+        "sedimentary"
+      ],
+      "hardness": "2.5",
+      "specific_gravity": "2.2",
+      "cleavage": "3 perfect",
+      "crustal_abundance": "trace",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide37.jpg",
+      "imageName": "Slide37",
+      "title": "Fluorite",
+      "chemistry": "Ca F_2",
+      "classification": "halide",
+      "crystal_system": "isometric",
+      "occurrence": [
+        "metamorphic"
+      ],
+      "hardness": "4",
+      "specific_gravity": "3.2",
+      "cleavage": "4 perfect",
+      "crustal_abundance": "trace",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide38.jpg",
+      "imageName": "Slide38",
+      "title": "Gypsum",
+      "chemistry": "Ca S O_4 (H_2 O)_2",
+      "classification": "sulfate",
+      "crystal_system": "monoclinic",
+      "occurrence": [
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "2",
+      "specific_gravity": "2.3",
+      "cleavage": "1 perfect, 2 good",
+      "crustal_abundance": "trace",
+      "economic_value": "high"
+    },
+    {
+      "fileName": "Slide39.jpg",
+      "imageName": "Slide39",
+      "title": "Barite",
+      "chemistry": "Ba S O_4",
+      "classification": "sulfate",
+      "crystal_system": "orthorhombic",
+      "occurrence": [
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "3 - 3.5",
+      "specific_gravity": "4.5",
+      "cleavage": "2 perfect, 1 good",
+      "crustal_abundance": "trace",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide40.jpg",
+      "imageName": "Slide40",
+      "title": "Apatite",
+      "chemistry": "Ca_5 (P O_4)_3 (OH, F, Cl)",
+      "classification": "phosphate",
+      "crystal_system": "hexagonal",
+      "occurrence": [
+        "igneous",
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "5",
+      "specific_gravity": "3.1 - 3.2",
+      "cleavage": "2 poor",
+      "crustal_abundance": "low",
+      "economic_value": "high"
+    },
+    {
+      "fileName": "Slide41.jpg",
+      "imageName": "Slide41",
+      "title": "Monazite",
+      "chemistry": "(La, Ce, Nd) P O_4 ",
+      "classification": "phosphate",
+      "crystal_system": "monoclinic",
+      "occurrence": [
+        "igneous",
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "5",
+      "specific_gravity": "5.0 - 5.3",
+      "cleavage": "1 good, 1 poor",
+      "crustal_abundance": "trace",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide42.jpg",
+      "imageName": "Slide42",
+      "title": "Calcite",
+      "chemistry": "Ca C O_3",
+      "classification": "carbonate",
+      "crystal_system": "hexagonal",
+      "occurrence": [
+        "igneous",
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "3",
+      "specific_gravity": "2.7",
+      "cleavage": "3 perfect",
+      "crustal_abundance": "moderate",
+      "economic_value": "high"
+    },
+    {
+      "fileName": "Slide43.jpg",
+      "imageName": "Slide43",
+      "title": "Dolomite",
+      "chemistry": "Ca Mg (C O_3)_2",
+      "classification": "carbonate",
+      "crystal_system": "hexagonal",
+      "occurrence": [
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "3.5 - 4",
+      "specific_gravity": "2.9",
+      "cleavage": "3 perfect",
+      "crustal_abundance": "low",
+      "economic_value": "low"
+    },
+    {
+      "fileName": "Slide44.jpg",
+      "imageName": "Slide44",
+      "title": "Magnesite",
+      "chemistry": "Mg C O_3",
+      "classification": "carbonate",
+      "crystal_system": "hexagonal",
+      "occurrence": [
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "4",
+      "specific_gravity": "3.0",
+      "cleavage": "3 perfect",
+      "crustal_abundance": "low",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide45.jpg",
+      "imageName": "Slide45",
+      "title": "Siderite",
+      "chemistry": "Fe C O_3",
+      "classification": "carbonate",
+      "crystal_system": "hexagonal",
+      "occurrence": [
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "4 - 4.5",
+      "specific_gravity": "4",
+      "cleavage": "3 perfect",
+      "crustal_abundance": "trace",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide46.jpg",
+      "imageName": "Slide46",
+      "title": "Magnetite",
+      "chemistry": "Fe_3 O_4",
+      "classification": "oxide (spinel)",
+      "crystal_system": "isometric",
+      "occurrence": [
+        "igneous",
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "5.5 - 6",
+      "specific_gravity": "5.2",
+      "cleavage": "none",
+      "crustal_abundance": "moderate",
+      "economic_value": "very high"
+    },
+    {
+      "fileName": "Slide47.jpg",
+      "imageName": "Slide47",
+      "title": "Hematite",
+      "chemistry": "Fe_2 O_3",
+      "classification": "oxide",
+      "crystal_system": "hexagonal",
+      "occurrence": [
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "5 - 6",
+      "specific_gravity": "5.3",
+      "cleavage": "none",
+      "crustal_abundance": "trace",
+      "economic_value": "high"
+    },
+    {
+      "fileName": "Slide48.jpg",
+      "imageName": "Slide48",
+      "title": "Chromite",
+      "chemistry": "(Fe, Mg) Cr_2 O_4",
+      "classification": "oxide (spinel)",
+      "crystal_system": "isometric",
+      "occurrence": [
+        "igneous",
+        "sedimentary"
+      ],
+      "hardness": "5.5",
+      "specific_gravity": "4.5 - 5.1",
+      "cleavage": "none",
+      "crustal_abundance": "low",
+      "economic_value": "high"
+    },
+    {
+      "fileName": "Slide49.jpg",
+      "imageName": "Slide49",
+      "title": "Ilmenite",
+      "chemistry": "Ti Fe O_3",
+      "classification": "oxide",
+      "crystal_system": "hexagonal",
+      "occurrence": [
+        "igneous",
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "5 - 6",
+      "specific_gravity": "4.7 - 4.8",
+      "cleavage": "none",
+      "crustal_abundance": "low",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide50.jpg",
+      "imageName": "Slide50",
+      "title": "Rutile",
+      "chemistry": "Ti O_2",
+      "classification": "oxide",
+      "crystal_system": "tetragonal",
+      "occurrence": [
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "6 - 6.5",
+      "specific_gravity": "4.3",
+      "cleavage": "2 good",
+      "crustal_abundance": "low",
+      "economic_value": "high"
+    },
+    {
+      "fileName": "Slide51.jpg",
+      "imageName": "Slide51",
+      "title": "Corundum",
+      "chemistry": "Al_2 O_3",
+      "classification": "oxide",
+      "crystal_system": "hexagonal",
+      "occurrence": [
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "9",
+      "specific_gravity": "4.0",
+      "cleavage": "none",
+      "crustal_abundance": "trace",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide52.jpg",
+      "imageName": "Slide52",
+      "title": "Cassiterite",
+      "chemistry": "Sn O_2",
+      "classification": "oxide",
+      "crystal_system": "tetragonal",
+      "occurrence": [
+        "igneous",
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "6 - 7",
+      "specific_gravity": "6.9 - 7.1",
+      "cleavage": "1 good, 1 poor",
+      "crustal_abundance": "trace",
+      "economic_value": "high"
+    },
+    {
+      "fileName": "Slide53.jpg",
+      "imageName": "Slide53",
+      "title": "Gibbsite",
+      "chemistry": "Al (O H)_3",
+      "classification": "hydroxide",
+      "crystal_system": "monoclinic",
+      "occurrence": [
+        "metamorphic",
+        "sedimentary"
+      ],
+      "hardness": "2.5 - 3.5",
+      "specific_gravity": "2.4",
+      "cleavage": "1 perfect",
+      "crustal_abundance": "low",
+      "economic_value": "high"
+    },
+    {
+      "fileName": "Slide54.jpg",
+      "imageName": "Slide54",
+      "title": "Goethite",
+      "chemistry": "Fe O (OH)",
+      "classification": "hydroxide",
+      "crystal_system": "orthorhombic",
+      "occurrence": [
+        "sedimentary"
+      ],
+      "hardness": "5 - 5.5",
+      "specific_gravity": "4.3",
+      "cleavage": "1 perfect, 1 good",
+      "crustal_abundance": "moderate",
+      "economic_value": "moderate"
+    },
+    {
+      "fileName": "Slide55.jpg",
+      "imageName": "Slide55",
+      "title": "The Miner",
+      "subtitle": "Economic value"
+    },
+    {
+      "fileName": "Slide56.jpg",
+      "imageName": "Slide56",
+      "title": "The Petrologist",
+      "subtitle": "Crustal abundance"
+    },
+    {
+      "fileName": "Slide57.jpg",
+      "imageName": "Slide57",
+      "title": "The Gemmologist",
+      "subtitle": "Hardness"
+    },
+    {
+      "fileName": "Slide58.jpg",
+      "imageName": "Slide58",
+      "title": "The Mineralogist",
+      "subtitle": "Cleavage"
+    },
+    {
+      "fileName": "Slide59.jpg",
+      "imageName": "Slide59",
+      "title": "The Geophysicist",
+      "subtitle": "Specific gravity"
+    },
+    {
+      "fileName": "Slide60.jpg",
+      "imageName": "Slide60",
+      "title": "The Geologist",
+      "subtitle": "Change to trumps category of your choice"
+    },
+    {
+      "fileName": "Slide61.jpg",
+      "imageName": "Slide61",
+      "title": "About Mineral Supertrumps",
+      "subtitle": "How to play: Rules 1 - 2"
+    },
+    {
+      "fileName": "Slide62.jpg",
+      "imageName": "Slide62",
+      "title": "How to play",
+      "subtitle": "Rules 3 - 7"
+    },
+    {
+      "fileName": "Slide63.jpg",
+      "imageName": "Slide63",
+      "title": "Trump Categories",
+      "subtitle": "Strategies"
+    }
+  ]
+}
