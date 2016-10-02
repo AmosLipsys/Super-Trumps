@@ -59,13 +59,14 @@ public class MainMenu {
     }
 
     // New Game Selected
-    private static void startNewGame(){
+    public static void startNewGame(){
         int numPlayers = getNumPlayers();
         SuperTrumpsGame game = new SuperTrumpsGame(numPlayers);
         game.selectDealer();
         game.displayDealer();
         game.dealRandomCards();
-        game.displayDealer();
+        game.showUserCards();
+        game.firstTurn();
     }
 
     // Get number of players from user min = 2, max = 5
@@ -96,5 +97,6 @@ public class MainMenu {
             return false;
         }
     }
+
 
 }

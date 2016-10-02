@@ -22,4 +22,14 @@ public class Player {
             getNewCard(stDeck);
         }
     }
+
+    public void playCard(int cardNo){
+        displayCard
+    }
+
+    public void displayCards(){
+        for (Card chosenCard:playersCards) {
+            chosenCard.display();
+        }
+    }
 }

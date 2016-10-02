@@ -10,6 +10,8 @@ public class SuperTrumpsGame {
     int numPlayers, dealerId, playerTurn;
     private ArrayList<Player> players;
     private Deck superTrumpDeck = new Deck();
+    String currentCategory;
+    Card currentCard;
 
     public SuperTrumpsGame(int numPlayers) {
         this.numPlayers = numPlayers;
@@ -22,12 +24,25 @@ public class SuperTrumpsGame {
         playerTurn = (dealerId + 1) % numPlayers;
     }
 
+    public void firstTurn(){
+        if(playerTurn != 0){
+            int selectedCard = 0;
+
+        }
+    }
+
+
     public void nextTurn(){
         playerTurn = (playerTurn + 1) % numPlayers;
     }
 
     void displayDealer(){
-        System.out.println("Dealer is Player " +dealerId);
+        if (dealerId == 0){
+            System.out.println("You are the dealer!");
+        }
+        else {
+            System.out.println("Dealer is Player " + dealerId);
+        }
     }
 
     void dealRandomCards() {
@@ -40,8 +55,10 @@ public class SuperTrumpsGame {
             player.setCards(superTrumpDeck);
         }
 
+    }
 
-
-
+    public void showUserCards() {
+        System.out.println("The following are your cards:");
+        players.get(0).displayCards();
     }
 }

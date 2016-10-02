@@ -142,22 +142,29 @@ public class Card {
 
     }
 
+    void displayCard(int cardNo){
+
+    }
+
 
 
     void display(){
-        System.out.println(fileName);
-        System.out.println(imageName);
-        System.out.println(title);
-        System.out.println(chemistry);
-        System.out.println(classification);
-        System.out.println(crystalSystem);
-        System.out.println(occurrence);
-        System.out.println(hardness);
-        System.out.println(spGravity);
-        System.out.println(cleavage);
-        System.out.println(crustalAbundance);
-        System.out.println(economicValue);
-        System.out.println("#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#\n");
+        System.out.println(String.format("" +
+                        "Title: %-25s |Chemistry: %-35s |Classification: %-20s \n" +
+                        "Crystal System: %-16s |Occurrence: %-34s |Hardness: %-20s \n" +
+                        "Special Gravity: %-15s |Cleavage: %-36s |Crustal Abundance: %-10s \n" +
+                        "Economic Value: %-10s\n ",
+                title, chemistry, classification,crystalSystem, occurrence,
+                hardness,spGravity, cleavage, crustalAbundance, economicValue));
+//        System.out.println(chemistry);
+//        System.out.println(classification);
+//        System.out.println(crystalSystem);
+//        System.out.println(occurrence);
+//        System.out.println(hardness);
+//        System.out.println(spGravity);
+//        System.out.println(cleavage);
+//        System.out.println(crustalAbundance);
+//        System.out.println(economicValue);
     }
 
 
