@@ -30,9 +30,19 @@ public class SuperTrumpsGame {
         int cardSelection = 0;
         if(playerTurn != 0) {
             chooseRandCat();
+            currentCard = players.get(playerTurn).playCard(cardSelection);
+
+            if (currentCard.isTrump) {
+                if (currentCard.getTrumpType().equals("Any Category")) {
+                    chooseRandCat();
+                } else {
+                    currentCategory = currentCard.getTrumpType();
+                }
+            }
+            currentCard.displayNameCatVal(currentCategory);
         }
+        // User Turn
         else {
-            // User Turn
             currentCategory = "Hardness";
             players.get(0).displayCards();
             Scanner scan = new Scanner(System.in);
@@ -49,15 +59,57 @@ public class SuperTrumpsGame {
                 if (cardSelection <= 0 || cardSelection > players.get(0).noCards()) {
                     System.out.println("Card not in range :(");
                 }
-                }
-
-
-                cardSelection--;
-
             }
-        currentCard = players.get(playerTurn).playCard(cardSelection);
-        currentCard.displayNameCatVal(currentCategory);
+
+            cardSelection--;
+            currentCard = players.get(playerTurn).playCard(cardSelection);
+
+            if(currentCard.isTrump){
+                if (currentCard.getTrumpType().equals("Any Category")) {
+                    displayCatOptions();
+                    pickCat(userInputOneToFive());
+                }
+                else{
+                    currentCategory = currentCard.getTrumpType();
+                }
+            }
+            else{
+                displayCatOptions();
+                pickCat(userInputOneToFive());
+            }
+            currentCard.displayNameCatVal(currentCategory);
+            }
+
         nextTurn();
+    }
+
+    private static void displayCatOptions(){
+        System.out.println("\nChoose one of the following options:\n"+
+                "1) Hardness\n" +
+                "2) Specific Gravity\n" +
+                "3) Cleavage\n" +
+                "4) Crustal Abundance\n" +
+                "5) Economic Value");
+    }
+
+    private static int userInputOneToFive(){
+        Scanner scan = new Scanner(System.in);
+        int selection = -1;
+        while(selection <= 0 || selection > 5) {
+            System.out.println("Pick a value 1 - 5:");
+            String userChoice = scan.next();
+            if (choiceIsInt(userChoice)) {
+                selection = Integer.parseInt(userChoice);
+            } else {
+                System.out.println("Input not an Integer");
+            }
+
+            if (selection <= 0 || selection > 5) {
+                System.out.println("Input number 1 - 5");
+            }
+        }
+        return selection;
+
     }
 
 
@@ -104,10 +156,13 @@ public class SuperTrumpsGame {
         players.get(0).displayCards();
     }
 
-    private void chooseRandCat(){
+    private void chooseRandCat() {
         Random rand = new Random();
         int selection = rand.nextInt(5) + 1;
+        pickCat(selection);
+    }
 
+    private void pickCat(int selection){
         switch (selection) {
             case 1:
                 currentCategory = "Hardness";

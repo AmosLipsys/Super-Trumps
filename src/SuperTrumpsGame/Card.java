@@ -32,6 +32,10 @@ public class Card {
 
     }
 
+    String getTrumpType(){
+        return "Not a Trump";
+    }
+
     private void setPropertyValues(){
         // Hardness
         if(hardness.split("-").length == 2){
@@ -140,6 +144,21 @@ public class Card {
 
 
     }
+    String getAttribute(String attribute){
+        switch (attribute) {
+            case "Hardness":
+                return hardness;
+            case "Specific Gravity":
+                return spGravity;
+            case "Cleavage":
+                return cleavage;
+            case "Crustal Abundance":
+                return crustalAbundance;
+            case "Economic Value":
+                return economicValue;
+        }
+        return "";
+    }
 
     double getAttributeValue(String attribute){
         switch (attribute) {
@@ -179,7 +198,7 @@ public class Card {
     }
     public void displayNameCatVal(String category) {
         System.out.println(String.format("Player plays: \n Title: %-10s \n Category: %s - %s",
-                title, category, getAttributeValue(category)));
+                title, category, getAttribute(category)));
 
     }
 
