@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 
 public class SuperTrumpsGame {
-    private static final int NUMBER_CARDS_TO_DEAL = 1;
+    private static final int NUMBER_CARDS_TO_DEAL = 8;
     int numPlayers, dealerId, playerTurn, playerPassed, lastPlayer;
     private ArrayList<Player> players;
     private ArrayList<Integer> winners = new ArrayList<>();
