@@ -65,7 +65,6 @@ public class MainMenu {
         game.selectDealer();
         game.displayDealer();
         game.dealRandomCards();
-        game.showUserCards();
         game.firstTurn();
     }
 

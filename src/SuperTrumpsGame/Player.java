@@ -23,8 +23,15 @@ public class Player {
         }
     }
 
-    public void playCard(int cardNo){
-        displayCard
+    public int noCards(){
+        return playersCards.size();
+    }
+
+    public Card playCard(int cardNo){
+        Card selectedCard = playersCards.get(cardNo);
+        playersCards.remove(cardNo);
+
+        return selectedCard;
     }
 
     public void displayCards(){

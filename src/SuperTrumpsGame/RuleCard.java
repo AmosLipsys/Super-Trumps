@@ -4,6 +4,7 @@ package SuperTrumpsGame;
  * Created by Amos on 02-Oct-16.
  */
 public class RuleCard extends Card{
+    boolean isTrump = true;
 
     RuleCard(String fileName, String imageName, String title, String subtitle){
         this.fileName = fileName;
@@ -12,12 +13,15 @@ public class RuleCard extends Card{
         this.subtitle = subtitle;
     }
 
+
     @Override
     void display() {
-        System.out.println(fileName);
-        System.out.println(imageName);
-        System.out.println(title);
-        System.out.println(subtitle);
-        System.out.println("#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#\n");
+        System.out.println(String.format("Title: %s \nSubtitle: %s",title,subtitle));
+    }
+
+    public void displayNameCatVal(String category) {
+        System.out.println(String.format("Player plays: \nTitle: %-10s \nSet Category to: %-10s ",
+                title, subtitle));
+
     }
 }

@@ -7,9 +7,8 @@ public class Card {
 
     String fileName, imageName, title, classification, crystalSystem, chemistry, cleavage, crustalAbundance,
             economicValue, hardness, spGravity, occurrence, subtitle;
-    double valueHarness, valueSpGravity;
-    int valueCleavage, valueCrustalAbundance, valueEconomicValue;
-
+    double valueHardness, valueSpGravity, valueCleavage, valueCrustalAbundance, valueEconomicValue;
+    boolean isTrump = false;
     public Card() {
     }
 
@@ -36,9 +35,9 @@ public class Card {
     private void setPropertyValues(){
         // Hardness
         if(hardness.split("-").length == 2){
-            valueHarness = Double.parseDouble(hardness.split("-")[1]);
+            valueHardness = Double.parseDouble(hardness.split("-")[1]);
         }
-        else valueHarness = Double.parseDouble(hardness);
+        else valueHardness = Double.parseDouble(hardness);
 
         //SP Gravity
         if(spGravity.split("-").length == 2){
@@ -142,8 +141,20 @@ public class Card {
 
     }
 
-    void displayCard(int cardNo){
-
+    double getAttributeValue(String attribute){
+        switch (attribute) {
+            case "Hardness":
+                return valueHardness;
+            case "Specific Gravity":
+                return valueSpGravity;
+            case "Cleavage":
+                return valueCleavage;
+            case "Crustal Abundance":
+                return valueCrustalAbundance;
+            case "Economic Value":
+                return valueEconomicValue;
+        }
+        return 0.0;
     }
 
 
@@ -166,6 +177,12 @@ public class Card {
 //        System.out.println(crustalAbundance);
 //        System.out.println(economicValue);
     }
+    public void displayNameCatVal(String category) {
+        System.out.println(String.format("Player plays: \n Title: %-10s \n Category: %s - %s",
+                title, category, getAttributeValue(category)));
+
+    }
+
 
 
 }
