@@ -180,22 +180,25 @@ public class Card {
 
 
     void display(){
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println(String.format("" +
                         "Title: %-25s |Chemistry: %-35s |Classification: %-20s \n" +
                         "Crystal System: %-16s |Occurrence: %-34s |Hardness: %-20s \n" +
                         "Special Gravity: %-15s |Cleavage: %-36s |Crustal Abundance: %-10s \n" +
-                        "Economic Value: %-10s\n ",
+                        "Economic Value: %-10s ",
                 title, chemistry, classification,crystalSystem, occurrence,
                 hardness,spGravity, cleavage, crustalAbundance, economicValue));
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 
     }
 
     void displayNameCatVal(String category, int playersTurn) {
-        playersTurn ++;
-        System.out.println(String.format("Player %s plays: \nTitle: %-10s \nCategory: %s - %s",
-                playersTurn, title, category, getAttribute(category)));
-
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println(String.format("Title: %-10s \nCategory: %s - %s",
+                title, category, getAttribute(category)));
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     }
+
 
 
 

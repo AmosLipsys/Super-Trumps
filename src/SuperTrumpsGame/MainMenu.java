@@ -66,13 +66,13 @@ public class MainMenu {
         game.selectDealer();
         game.displayDealer();
         game.dealRandomCards();
-        game.firstTurn();
-        game.nextTurns();
+        game.round();
+
     }
 
-    // Get number of players from user min = 2, max = 5
+    // Get number of players from user min = 3, max = 5
     private static int getNumPlayers(){
-        int numPlayers = -1, min = 3, max = 5;
+        int numPlayers = -1, min = 1, max = 5;
         while (numPlayers < min || numPlayers > max) {
             System.out.println("\n\nChoose how many players are allowed to play:");
             Scanner scan = new Scanner(System.in);

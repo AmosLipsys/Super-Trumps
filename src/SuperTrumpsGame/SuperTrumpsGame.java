@@ -10,13 +10,13 @@ import java.util.Scanner;
 
 
 public class SuperTrumpsGame {
-    private static final int NUMBER_CARDS_TO_DEAL = 6 ;
-    int numPlayers, dealerId, playerTurn;
+    private static final int NUMBER_CARDS_TO_DEAL = 1;
+    int numPlayers, dealerId, playerTurn, playerPassed, lastPlayer;
     private ArrayList<Player> players;
+    private ArrayList<Integer> winners = new ArrayList<>();
     private Deck superTrumpDeck = new Deck();
     String currentCategory;
     Card currentCard;
-    int playerPassed;
 
     public SuperTrumpsGame(int numPlayers) {
         this.numPlayers = numPlayers;
@@ -34,13 +34,15 @@ public class SuperTrumpsGame {
     // First Turn at the start of each round
     public void firstTurn(){
 
+        // Skip players without any cards
+        while (players.get(playerTurn).outOfCards){
+            playerTurn = (playerTurn + 1) % numPlayers;
+        }
+
         // Make all cards valid
         for (Card unauditedCard: players.get(playerTurn).playersCards){
             players.get(playerTurn).validPlayersCards.add(unauditedCard);
-//            players.get(playerTurn).playersCards.remove(unauditedCard);
         }
-
-
 
         // AI First Turn
         //----------------------------------------------------------------
@@ -51,6 +53,7 @@ public class SuperTrumpsGame {
 
             // AI Selects first card in hand
             currentCard = players.get(playerTurn).playCard(cardSelection);
+            lastPlayer = playerTurn;
 
             // If AI selects trump card
             if (currentCard.isTrump) {
@@ -63,12 +66,14 @@ public class SuperTrumpsGame {
                 }
             }
             currentCard.displayNameCatVal(currentCategory, playerTurn);
+            resetDeck();
         }
 
         // User First Turn
         //----------------------------------------------------------------
         else {
             //Show users cards
+            lastPlayer = playerTurn;
             players.get(0).displayCards();
             // Select a card from range
             cardSelection = selectCard(players.get(0).noCards());
@@ -97,31 +102,56 @@ public class SuperTrumpsGame {
         nextPlayer();
     }
 
+    public void round(){
+        while ((winners.size()+1 < players.size())){
+            firstTurn();
+            nextTurns();
+        }
+        displayScoreboard();
+    }
+
     public void nextTurns() {
         resetPass();
-        while (playerPassed < numPlayers){
-            // If player is AI and hasn't passed
-            if(!(playerTurn == 0) && !(players.get(playerTurn).passed)){
-                aiTurn();
-            }
-            else {
-                userTurn();
-            }
-            if(players.get(playerTurn).passed){
-                playerPassed = 0;
-                for (Player guy: players) {
-                    if(guy.passed){
-                        playerPassed++;
+        int i = 2;
+        while (numPlayers - 1 > playerPassed && winners.size() +1 < players.size() ){
+
+            if (!(players.get(playerTurn).outOfCards)){
+                if((!(players.get(playerTurn).passed))){
+
+                    if (playerTurn == 0) {
+                        System.out.println("Users Turn:");
+                        userTurn();
+                    }
+                    else {
+                        System.out.println("AI's Turn:");
+                        aiTurn();
+                    }
+                    System.out.println("Turn: " + i);
+                    i++;
+                    if(players.get(playerTurn).playersCards.isEmpty()){
+                        winners.add(playerTurn);
+                        players.get(playerTurn).outOfCards = true;
+                        System.out.println("Player " + playerTurn + "is out of cards!");
                     }
                 }
-                System.out.println("\nPlayer " + playerTurn + " Passed\n");
+                else if(!(players.get(playerTurn).passed)){
+                    System.out.println("Player " + (playerTurn + 1) + " Passes");
+                }
             }
 
+
             nextPlayer();
+
+        }
+        System.out.println("Player " + (lastPlayer + 1)  + " wins the round!");
+        playerTurn = lastPlayer;
+
         }
 
 
-    }
+
+
+
 
     private void resetPass(){
         playerPassed = 0;
@@ -136,6 +166,8 @@ public class SuperTrumpsGame {
         players.get(playerTurn).validPlayersCards.clear();
     }
 
+
+
     // Normal AI Turn
     private void aiTurn(){
         //find valid cards and separate them;
@@ -145,11 +177,14 @@ public class SuperTrumpsGame {
         if(players.get(playerTurn).validPlayersCards.isEmpty()){
             players.get(playerTurn).getNewCard(superTrumpDeck);
             players.get(playerTurn).setPassed(true);
+            System.out.println("AI Player searches his deck but can't find anything");
+            playerPassed++;
         }
         else{
             // AI Selects first card in hand
             int cardSelection = 0;
             currentCard = players.get(playerTurn).playCard(cardSelection);
+            lastPlayer = playerTurn;
 
             // If AI selects trump card
             if (currentCard.isTrump) {
@@ -161,24 +196,61 @@ public class SuperTrumpsGame {
                 } else {
                     currentCategory = currentCard.getTrumpType();
                 }
-                currentCard.displayNameCatVal(currentCategory, playerTurn);
+
             }
+            currentCard.displayNameCatVal(currentCategory, playerTurn);
         }
         resetDeck();
     }
 
     // Normal User Turn
-    void userTurn(){
-        validateCards();
-        players.get(0).displayCardsSimple(currentCategory);
+    void userTurn() {
 
-        resetDeck();
+        validateCards();
+        // If play has no valid card pass
+        if (players.get(0).validPlayersCards.size() == 0) {
+            players.get(0).passed = true;
+            players.get(playerTurn).getNewCard(superTrumpDeck);
+            playerPassed++;
+        }
+
+        else {
+            int cardSelection = 0;
+
+            //Show users cards
+            players.get(0).displayCardsSimple(currentCategory, playerTurn);
+            // Select a card from range
+            cardSelection = selectCard(players.get(0).noCards());
+            // Remove card from users deck and store card into var current card
+            currentCard = players.get(playerTurn).playCard(cardSelection);
+            // If it is a trump card played
+            if (currentCard.isTrump) {
+                // If the geologist card is picked up
+                if (currentCard.getTrumpType().equals("Any Category")) {
+                    displayCatOptions();
+                    pickCat(userInputOneToFive());
+                }
+                // If a non geologist trump card is picked up
+                else {
+                    currentCategory = currentCard.getTrumpType();
+                }
+            }
+            // No trump card means player needs to select a category
+
+            currentCard.displayNameCatVal(currentCategory, playerTurn);
+            lastPlayer = playerTurn;
+            resetDeck();
+        }
+
+
     }
+
+
 
     private void validateCards(){
         //find valid cards and separate them;
         for (Card unauditedCard : players.get(playerTurn).playersCards) {
-            if((isHigher(currentCard, unauditedCard)) || unauditedCard.isTrump){
+            if((isHigher(currentCard, unauditedCard)) || unauditedCard.isTrump || currentCard.isTrump){
                 players.get(playerTurn).validPlayersCards.add(unauditedCard);
             }
         }
@@ -254,7 +326,6 @@ public class SuperTrumpsGame {
         }
     }
 
-
     public void nextPlayer(){
         playerTurn = (playerTurn + 1) % numPlayers;
     }
@@ -309,6 +380,15 @@ public class SuperTrumpsGame {
                 currentCategory = "Economic Value";
                 break;
         }
+    }
+
+    private void displayScoreboard(){
+        int tally = 0;
+        for (int winner:winners) {
+            tally++;
+            System.out.println(tally + ") Player " + winner);
+        }
+
     }
 
 

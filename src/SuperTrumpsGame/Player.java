@@ -6,11 +6,12 @@ import java.util.ArrayList;
  * Created by Amos on 03-Oct-16.
  */
 public class Player {
-    boolean passed;
+    boolean passed, outOfCards;
     ArrayList<Card> playersCards = new ArrayList<Card>();
     ArrayList<Card> validPlayersCards = new ArrayList<Card>();
     public void Player() {
         passed = false;
+        outOfCards = false;
     }
 
     public void setPassed(boolean passed) {
@@ -29,7 +30,7 @@ public class Player {
     }
 
     public int noCards(){
-        return playersCards.size();
+        return validPlayersCards.size();
     }
 
     public Card playCard(int cardNo){
@@ -40,12 +41,21 @@ public class Player {
     }
 
     public void displayCards(){
+        int cardNumber = 1;
         for (Card chosenCard:validPlayersCards) {
+            System.out.println("Card Number " + cardNumber);
             chosenCard.display();
+            cardNumber++;
         }
     }
 
-    public void displayCardsSimple(String currentCategory) {
+    public void displayCardsSimple(String currentCategory, int playerTurn) {
+        int cardNumber = 1;
+        for (Card chosenCard:validPlayersCards) {
+            System.out.println("Card Number " + cardNumber);
+            chosenCard.displayNameCatVal(currentCategory, playerTurn);
+            cardNumber++;
+        }
 
     }
 }
