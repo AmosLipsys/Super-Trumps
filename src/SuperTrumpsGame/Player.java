@@ -6,10 +6,15 @@ import java.util.ArrayList;
  * Created by Amos on 03-Oct-16.
  */
 public class Player {
-    boolean finished;
+    boolean passed;
     ArrayList<Card> playersCards = new ArrayList<Card>();
+    ArrayList<Card> validPlayersCards = new ArrayList<Card>();
     public void Player() {
-        finished = false;
+        passed = false;
+    }
+
+    public void setPassed(boolean passed) {
+        this.passed = passed;
     }
 
     public void getNewCard(Deck stDeck){
@@ -17,8 +22,8 @@ public class Player {
         playersCards.add(stDeck.dealCard());
     }
 
-    public void setCards(Deck stDeck) {
-        for (int i = 0; i < 6 ; i++) {
+    public void setCards(Deck stDeck, int numCards) {
+        for (int i = 0; i < numCards ; i++) {
             getNewCard(stDeck);
         }
     }
@@ -28,15 +33,19 @@ public class Player {
     }
 
     public Card playCard(int cardNo){
-        Card selectedCard = playersCards.get(cardNo);
-        playersCards.remove(cardNo);
-
+        Card selectedCard = validPlayersCards.get(cardNo);
+        validPlayersCards.remove(selectedCard);
+        playersCards.remove(selectedCard);
         return selectedCard;
     }
 
     public void displayCards(){
-        for (Card chosenCard:playersCards) {
+        for (Card chosenCard:validPlayersCards) {
             chosenCard.display();
         }
+    }
+
+    public void displayCardsSimple(String currentCategory) {
+
     }
 }

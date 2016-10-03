@@ -15,9 +15,10 @@ public class RuleCard extends Card{
 
     @Override
     void display() {
-        System.out.println(String.format("Title: %s \nSubtitle: %s",title,subtitle));
+        System.out.println(String.format("Title: %s \nSubtitle: %s\n",title,subtitle));
     }
 
+    @Override
     String getTrumpType(){
         switch (title) {
             case "The Gemmologist":
@@ -35,9 +36,11 @@ public class RuleCard extends Card{
         }
     }
 
-    public void displayNameCatVal(String category) {
-        System.out.println(String.format("Player plays: \nTitle: %-10s \nSet Category to: %-10s ",
-                title, subtitle));
+    @Override
+    public void displayNameCatVal(String category, int playersTurn) {
+        playersTurn ++;
+        System.out.println(String.format("Player %s plays: \nTitle: %s \nSubtitle: %s \nSet Category to: %s ",
+                playersTurn,title, subtitle, category));
 
     }
 }

@@ -8,6 +8,7 @@ public class MainMenu {
         showWelcome();
         int userChoice = 0;
         String userChoiceStr;
+
         while (userChoice != 3) {
             showMenu();
             userChoiceStr = getUserChoice();
@@ -42,8 +43,8 @@ public class MainMenu {
 
     // Print Instructions
     private  static void displayInstructions(){
-        System.out.print("Instructions to play Super Trumps:");
-        System.out.print("To Be Written. Sorry this game is still in Alpha :(");
+        System.out.println("Instructions to play Super Trumps:");
+        System.out.println("To Be Written. Sorry this game is still in Alpha :(");
     }
 
     // Display Goodbye Message
@@ -66,6 +67,7 @@ public class MainMenu {
         game.displayDealer();
         game.dealRandomCards();
         game.firstTurn();
+        game.nextTurns();
     }
 
     // Get number of players from user min = 2, max = 5

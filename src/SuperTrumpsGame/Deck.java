@@ -97,8 +97,6 @@ public class Deck {
                         stDeck.add(new Card(fileName, imageName, title, chemistry, classification, crystalSystem,
                                 occurrence, hardness, cleavage, crustalAbundance, economicValue, spGravity));
 
-                        // Display Card
-//                        stDeck[index].display();
 
                         // Increase index to make a new card
                         index++;

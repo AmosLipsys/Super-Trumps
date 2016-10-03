@@ -144,7 +144,8 @@ public class Card {
 
 
     }
-    String getAttribute(String attribute){
+
+    private String getAttribute(String attribute){
         switch (attribute) {
             case "Hardness":
                 return hardness;
@@ -186,19 +187,13 @@ public class Card {
                         "Economic Value: %-10s\n ",
                 title, chemistry, classification,crystalSystem, occurrence,
                 hardness,spGravity, cleavage, crustalAbundance, economicValue));
-//        System.out.println(chemistry);
-//        System.out.println(classification);
-//        System.out.println(crystalSystem);
-//        System.out.println(occurrence);
-//        System.out.println(hardness);
-//        System.out.println(spGravity);
-//        System.out.println(cleavage);
-//        System.out.println(crustalAbundance);
-//        System.out.println(economicValue);
+
     }
-    public void displayNameCatVal(String category) {
-        System.out.println(String.format("Player plays: \n Title: %-10s \n Category: %s - %s",
-                title, category, getAttribute(category)));
+
+    void displayNameCatVal(String category, int playersTurn) {
+        playersTurn ++;
+        System.out.println(String.format("Player %s plays: \nTitle: %-10s \nCategory: %s - %s",
+                playersTurn, title, category, getAttribute(category)));
 
     }
 
