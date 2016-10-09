@@ -48,6 +48,19 @@ public class Player {
             cardNumber++;
         }
     }
+    public void displayAllCards(){
+        int cardNumber = 1;
+        for (Card chosenCard:validPlayersCards) {
+            System.out.println("Card Number " + cardNumber);
+            chosenCard.display();
+            cardNumber++;
+        }
+        for (Card chosenCard:playersCards) {
+            System.out.println("Card Number " + cardNumber);
+            chosenCard.display();
+            cardNumber++;
+        }
+    }
 
     public void displayCardsSimple(String currentCategory, int playerTurn) {
         int cardNumber = 1;

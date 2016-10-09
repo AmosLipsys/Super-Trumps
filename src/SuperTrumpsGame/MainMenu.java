@@ -45,6 +45,8 @@ public class MainMenu {
     private  static void displayInstructions(){
         System.out.println("Instructions to play Super Trumps:");
         System.out.println("To Be Written. Sorry this game is still in Alpha :(");
+        pressEnterToContinue();
+
     }
 
     // Display Goodbye Message
@@ -65,9 +67,11 @@ public class MainMenu {
         SuperTrumpsGame game = new SuperTrumpsGame(numPlayers);
         game.selectDealer();
         game.displayDealer();
+        pressEnterToContinue();
         game.dealRandomCards();
+        game.showAllUserCards();
+        pressEnterToContinue();
         game.round();
-
     }
 
     // Get number of players from user min = 3, max = 5
@@ -99,5 +103,15 @@ public class MainMenu {
         }
     }
 
+    private static void pressEnterToContinue()
+    {
+        System.out.println("\u001B[36m" + "Press " + "ENTER"+ " to continue..." + "\u001B[0m");
+        try
+        {
+            System.in.read();
+        }
+        catch(Exception e)
+        {}
+    }
 
 }
