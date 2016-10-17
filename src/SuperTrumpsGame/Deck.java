@@ -45,7 +45,7 @@ public class Deck {
         // Cards variables all gathered in strings
         String fileName, imageName, title, subtitle, classification, crystalSystem, occurrence = "", chemistry, hardness, spGravity, cleavage, crustalAbundance, economicValue;
         // Path to TEXT file. NOT PLIST, the file was externally converted to a different format
-        Path file = Paths.get("C:\\Users\\Amos\\Desktop\\Super Trumps\\src\\SuperTrumpsGame\\cards.txt");
+        Path file = Paths.get("C:\\Users\\jc299390\\Desktop\\Super-Trumps\\src\\SuperTrumpsGame\\cards.txt");
         InputStream input = null;
 
 

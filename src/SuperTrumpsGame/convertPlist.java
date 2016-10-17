@@ -14,8 +14,8 @@ public class convertPlist {
 
 
     public static void main(String argv[]){
-        String fileName, imageName, title, subtitle, classification, crystalSystem, occurrence = "", chemistry, hardness, spGravity, cleavage, crustalAbundance, economicValue;
-        Path file = Paths.get("C:\\Users\\Amos\\Desktop\\Super Trumps\\src\\SuperTrumpsGame\\cards.txt");
+        String fileName, imageName, title, subtitle, classification                                                                                     , crystalSystem, occurrence = "", chemistry, hardness, spGravity, cleavage, crustalAbundance, economicValue;
+        Path file = Paths.get("C:\\Users\\jc299390\\Desktop\\Super-Trumps\\src\\SuperTrumpsGame\\cards.txt");
         InputStream input = null;
         Card[] stDeck = new Card[54];
         Card[] ruleDeck = new Card[9];
