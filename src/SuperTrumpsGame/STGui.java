@@ -10,12 +10,15 @@ import java.awt.event.*;
  * Created by jc299390 on 17/10/16.
  */
 public class STGui extends JFrame implements ActionListener {
-    private JLabel titleLable = new JLabel("Super Trumps!", SwingConstants.CENTER);
-    private JButton newGameButt = new JButton("Start A New Game!");
-    private JButton instructionsButt = new JButton("Need Help Scrub?");
-    private JButton quitButt = new JButton("Crash To Desktop");
-    private GridLayout mainMenuLayout = new GridLayout(4, 1);
-    private Container con = getContentPane();
+    JFrame SuperTumpsApp = new JFrame();
+    GridLayout mainMenuLayout = new GridLayout(4, 1);
+    JPanel mainMenuPannel = new JPanel(mainMenuLayout);
+    JLabel titleLable = new JLabel("Super Trumps!", SwingConstants.CENTER);
+    JButton newGameButt = new JButton("Start A New Game!");
+    JButton instructionsButt = new JButton("Need Help Scrub?");
+    JButton quitButt = new JButton("Crash To Desktop");
+
+    Container con = getContentPane();
     Font titleFont = new Font("Verdana", Font.BOLD, 80);
     Font buttFont = new Font("Verdana", Font.BOLD, 30);
 
