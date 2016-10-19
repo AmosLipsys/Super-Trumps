@@ -1,30 +1,25 @@
-package SuperTrumpsGame;
-
-import com.sun.glass.ui.Size;
+package PracticeGUI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-/**
- * Created by jc299390 on 17/10/16.
- */
-public class STGui extends JFrame implements ActionListener {
-    JFrame SuperTumpsApp = new JFrame();
+public class MainMenuGUI extends JPanel implements ActionListener {
+    //Set Buttons and Labels
+
     GridLayout mainMenuLayout = new GridLayout(4, 1);
-    JPanel mainMenuPannel = new JPanel(mainMenuLayout);
     JLabel titleLable = new JLabel("Super Trumps!", SwingConstants.CENTER);
     JButton newGameButt = new JButton("Start A New Game!");
     JButton instructionsButt = new JButton("Need Help Scrub?");
     JButton quitButt = new JButton("Crash To Desktop");
 
-    Container con = getContentPane();
+    //Set Font
     Font titleFont = new Font("Verdana", Font.BOLD, 80);
     Font buttFont = new Font("Verdana", Font.BOLD, 30);
 
-    public static void main(String[] args){
-
-        // Set Look and Feel
+    MainMenuGUI(){
+        setBackground(Color.red);
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }
@@ -37,15 +32,8 @@ public class STGui extends JFrame implements ActionListener {
         } catch (UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
-
-        STGui frame = new STGui();
-    }
-
-
-
-    STGui(){
         // Set Background Colour
-        con.setBackground(Color.darkGray);
+        setBackground(Color.darkGray);
         // Set Title Font And Colour
         titleLable.setFont(titleFont);
         titleLable.setForeground(Color.white);
@@ -54,19 +42,31 @@ public class STGui extends JFrame implements ActionListener {
         instructionsButt.setFont(buttFont);
         quitButt.setFont(buttFont);
 
-        con.setLayout(mainMenuLayout);
-        con.add(titleLable);
-        con.add(newGameButt);
-        con.add(instructionsButt);
-        con.add(quitButt);
+        setLayout(mainMenuLayout);
+        add(titleLable);
+        add(newGameButt);
+        add(instructionsButt);
+        add(quitButt);
         setSize(1800, 1000);
         setVisible(true);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+
+
+
+
+        quitButt.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+            {
+                System.exit(0);
+            }
+        });
+
+
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
 
     }
 }

@@ -38,7 +38,7 @@ public class Deck {
     // Open TEXT file and make a deck
     private ArrayList<Card> makeDeck(){
 
-        //Store 63 Cards 52 Normal 6 Super Trump and 3 Instructions
+        //Store 63 Cards 52 Normal 6 Super Trump and 3 InstructionsGUI
         ArrayList<Card> stDeck = new ArrayList<>();
 
 //        Card[] stDeck = new Card[63];

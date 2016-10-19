@@ -34,16 +34,16 @@ public class MainMenu {
     // Display Menu Choice
     private static void showMenu(){
         System.out.println(System.getProperty("line.separator") + "Choose an option from the following:");
-        String[] menuItems = {"Start Game","Instructions","Quit"};
+        String[] menuItems = {"Start Game","InstructionsGUI","Quit"};
         for (int itemIndex = 0; itemIndex < menuItems.length; itemIndex++){
             System.out.println(String.format("%2s. %s",itemIndex + 1, menuItems[itemIndex]));
         }
         System.out.print(">> ");
     }
 
-    // Print Instructions
+    // Print InstructionsGUI
     private  static void displayInstructions(){
-        System.out.println("Instructions to play Super Trumps:");
+        System.out.println("InstructionsGUI to play Super Trumps:");
         System.out.println("To Be Written. Sorry this game is still in Alpha :(");
         pressEnterToContinue();
 
