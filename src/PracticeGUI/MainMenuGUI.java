@@ -51,9 +51,6 @@ public class MainMenuGUI extends JPanel implements ActionListener {
         setVisible(true);
 
 
-
-
-
         quitButt.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {

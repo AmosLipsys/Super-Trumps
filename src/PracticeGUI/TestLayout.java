@@ -22,7 +22,6 @@ public class TestLayout {
 
         JLabel title = new JLabel("Instructions", SwingConstants.CENTER);
         title.setFont(titleFont);
-
         frame.add(title, BorderLayout.NORTH);
 
         ImageIcon instructionsIcon = getImage(61);
@@ -38,7 +37,7 @@ public class TestLayout {
         buttonPanel.add(new JButton("Page 4"));
         buttonPanel.add(new JButton("Back to Main Menu"));
         frame.add(buttonPanel, BorderLayout.SOUTH);
-        frame.pack();
+//        frame.pack();
         frame.setVisible(true);
         frame.setBounds(0, 0, 1800, 1000);
 

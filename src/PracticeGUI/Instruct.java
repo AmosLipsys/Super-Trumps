@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Created by jc299390 on 21/10/16.
  */
-public class InstructionsGUI extends JPanel implements ActionListener {
+public class Instruct extends JPanel implements ActionListener {
     //Set Buttons and Labels
 //Set Font
     Font titleFont = new Font("Verdana", Font.BOLD, 40);
@@ -23,7 +23,7 @@ public class InstructionsGUI extends JPanel implements ActionListener {
     JButton page4Butt = new JButton("Page 4");
     JButton backButt = new JButton("Back to Main Menu");
 
-    InstructionsGUI(){
+    Instruct(){
 
         // Set Background Colour
         setBackground(Color.darkGray);

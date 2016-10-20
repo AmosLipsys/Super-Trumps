@@ -16,13 +16,20 @@ public class GuiFrame extends JFrame implements ActionListener {
 
         Container superTrumpPane = getContentPane();
 
-//        MainMenuGUI MainMenu = new MainMenuGUI();
-//        superTrumpPane.add(MainMenu);
 
-
+        MainMenuGUI MainMenu = new MainMenuGUI();
         InstructionsGUI Instructions = new InstructionsGUI();
-        superTrumpPane.add(Instructions);
+        Instruct instruct = new Instruct();
 
+        JPanel cards = new JPanel(new CardLayout());
+        cards.add(MainMenu);
+        cards.add(Instructions);
+        cards.add(instruct);
+
+
+        superTrumpPane.add(cards);
+
+//        add(new InstructionsGUI());
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         revalidate();
