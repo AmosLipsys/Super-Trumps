@@ -10,6 +10,7 @@ public class CardLayoutTutorial {
 	JPanel panelCont = new JPanel();
 	JPanel mainMenuPanel = new JPanel();
 	JPanel instructionsPanel = new JPanel();
+	JPanel gamePanel = new JPanel();
 	CardLayout cl = new CardLayout();
 
 	public CardLayoutTutorial() {
@@ -34,8 +35,11 @@ public class CardLayoutTutorial {
 		// Add Panels to the card layout list and set number
 		mainMenuPanel.add(new MainMenuGUI(cl, panelCont));
 		instructionsPanel.add(new InstructionsGUI(cl, panelCont) );
+		gamePanel.add(new GameGUI(cl, panelCont) );
+
 		panelCont.add(mainMenuPanel, "1");
 		panelCont.add(instructionsPanel, "2");
+		panelCont.add(gamePanel,"3");
 
 		// Show default as Main Menu
 		cl.show(panelCont, "1");
