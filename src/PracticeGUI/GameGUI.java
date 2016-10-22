@@ -4,15 +4,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
 
-public class MainMenuGUI extends JPanel implements ActionListener {
+/**
+ * Created by Amos on 23-Oct-16.
+ */
+public class GameGUI extends JPanel implements ActionListener {
     //Set Buttons and Labels
-    final int MIN_PLAYERS = 3;
-    final int MAX_PLAYERS = 5;
-    GridLayout mainMenuLayout = new GridLayout(5, 1);
+
+    GridLayout mainMenuLayout = new GridLayout(4, 1);
     JLabel titleLable = new JLabel("Super Trumps!", SwingConstants.CENTER);
-    JComboBox numPlayerSeletor = getNumPlayers(MIN_PLAYERS, MAX_PLAYERS);
+    JTextField randomtext = new JTextField("Random");
     JButton newGameButt = new JButton("Start A New Game!");
     JButton instructionsButt = new JButton("Need Help Scrub?");
     JButton quitButt = new JButton("Crash To Desktop");
@@ -22,7 +23,7 @@ public class MainMenuGUI extends JPanel implements ActionListener {
     Font buttFont = new Font("Verdana", Font.BOLD, 30);
 
 
-    MainMenuGUI(CardLayout cl, JPanel panelCont) {
+    GameGUI(CardLayout cl, JPanel panelCont){
         setBackground(Color.red);
 
         // Set Background Colour
@@ -34,24 +35,15 @@ public class MainMenuGUI extends JPanel implements ActionListener {
         newGameButt.setFont(buttFont);
         instructionsButt.setFont(buttFont);
         quitButt.setFont(buttFont);
-        numPlayerSeletor.setFont(buttFont);
+
         setLayout(mainMenuLayout);
         add(titleLable);
         add(newGameButt);
-        add(numPlayerSeletor);
-
-
+        add(randomtext);
         add(instructionsButt);
         add(quitButt);
         setSize(1800, 1000);
         setVisible(true);
-
-        newGameButt.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                cl.show(panelCont, "3");
-            }
-        });
 
         instructionsButt.addActionListener(new ActionListener() {
             @Override
@@ -62,10 +54,12 @@ public class MainMenuGUI extends JPanel implements ActionListener {
 
 
         quitButt.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e)
+            {
                 System.exit(0);
             }
         });
+
 
 
     }
@@ -74,18 +68,8 @@ public class MainMenuGUI extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
     }
-
-    JComboBox getNumPlayers(int MIN_PLAYERS, int MAX_PLAYERS) {
-        java.util.List<String> playerList = new ArrayList<>();
-        for (int i = MIN_PLAYERS; i <= MAX_PLAYERS; i++) {
-            String numString = Integer.toString(i);
-            playerList.add(numString + " Players");
-        }
-
-        JComboBox playerSelector = new JComboBox(playerList.toArray());
-        playerSelector.setSelectedIndex(0);
-        playerSelector.addActionListener(this);
-        return playerSelector;
-    }
 }
+
+
+
 

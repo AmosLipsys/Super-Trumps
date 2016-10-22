@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Created by jc299390 on 21/10/16.
  */
-public class InstructionsGUI extends JPanel implements ActionListener {
+public class InstructionsGUI extends JPanel implements ActionListener  {
     //Set Buttons and Labels
 //Set Font
     Font titleFont = new Font("Verdana", Font.BOLD, 40);
@@ -23,10 +23,10 @@ public class InstructionsGUI extends JPanel implements ActionListener {
     JButton page4Butt = new JButton("Page 4");
     JButton backButt = new JButton("Back to Main Menu");
 
-    InstructionsGUI(){
+    InstructionsGUI(CardLayout cl, JPanel panelCont){
 
         // Set Background Colour
-        setBackground(Color.darkGray);
+        setBackground(Color.white);
         // Set Title Font And Colour
         // Set layout
         setLayout(new BorderLayout());
@@ -92,19 +92,18 @@ public class InstructionsGUI extends JPanel implements ActionListener {
         });
 
         backButt.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
-                // Change Page
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                cl.show(panelCont, "1");
             }
         });
-
-
-
     }
 
     ImageIcon getImage(int imageNum){
-        String filePath = "C:\\Users\\jc299390\\Desktop\\SuperTrump\\Super-Trumps\\images\\Slide" +
-                Integer.toString(imageNum) + ".jpg"  ;
+
+        String filePath = "C:\\Users\\Amos\\Desktop\\Super Trumps\\images\\Slide" +
+                String.format("%02d",imageNum) + ".jpg" ;
+
         BufferedImage myPicture = null;
         try {
             myPicture = ImageIO.read(new File(filePath));
