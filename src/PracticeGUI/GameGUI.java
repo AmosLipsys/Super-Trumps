@@ -22,15 +22,16 @@ public class GameGUI extends JPanel implements ActionListener {
     JLabel category = new JLabel("Category: None Selected Yet", SwingConstants.CENTER);
     JLabel cardLabel;
     JPanel cardButtPanel;
-    JButton card = new JButton();
+    JPanel buttonPanel = new JPanel(new GridLayout());
 
     JButton passButt = new JButton("Pass");
+    JButton finishButt = new JButton("Finish The Game!");
 
     GridBagConstraints titleConstraints = new GridBagConstraints();
     GridBagConstraints categoryConstraints = new GridBagConstraints();
     GridBagConstraints cardPickConstraints = new GridBagConstraints();
     GridBagConstraints cardSelectorConstraints = new GridBagConstraints();
-    GridBagConstraints passButtConstraints = new GridBagConstraints();
+    GridBagConstraints buttonPanelConstraints = new GridBagConstraints();
 
 
     //Set Font
@@ -81,27 +82,33 @@ public class GameGUI extends JPanel implements ActionListener {
         cardSelectorConstraints.gridx = 0;
         cardSelectorConstraints.gridy = 4;
         // Pass Button
-        passButtConstraints.gridx = 0;
-        passButtConstraints.gridy = 5;
-        passButtConstraints.fill = GridBagConstraints.HORIZONTAL;
+        buttonPanelConstraints.gridx = 0;
+        buttonPanelConstraints.gridy = 5;
+        buttonPanelConstraints.fill = GridBagConstraints.HORIZONTAL;
         passButt.setFont(buttFont);
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
+        // Make Bottom Button Panel
+        buttonPanel.add(passButt);
+        buttonPanel.add(finishButt);
 
         // Fill Panels with Features
         add(titleLable, titleConstraints);
         add(category, categoryConstraints);
         add(cardLabel, cardPickConstraints);
         add(cardSelector, cardSelectorConstraints);
-        add(passButt, passButtConstraints);
+
+
+        add(buttonPanel, buttonPanelConstraints);
 
         passButt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
 
                 cardButtPanel.add(createCardButt(ThreadLocalRandom.current().nextInt(1, 54 + 1)));
+
+                cardButtPanel.getComponents();
                 revalidate();
                 repaint();
 

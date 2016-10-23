@@ -54,7 +54,7 @@ public class convertPlist {
                         crustalAbundance = reader.readLine().replaceAll("\"","").replaceAll("crustal_abundance:","").replaceAll("\u00A0","").replaceAll(",","").trim();
                         economicValue = reader.readLine().replaceAll("\"","").replaceAll("economic_value:","").replaceAll("\u00A0","").replaceAll(",","").trim();
                         stDeck[index] = new Card(fileName, imageName, title, chemistry, classification, crystalSystem,
-                                occurrence, hardness, cleavage, crustalAbundance, economicValue, spGravity);
+                                occurrence, hardness, cleavage, crustalAbundance, economicValue, spGravity, index+1);
                         stDeck[index].display();
                         index++;
                         if (imageName.contains("Slide54")){

@@ -4,12 +4,13 @@ package SuperTrumpsGame;
  * Created by Amos on 02-Oct-16.
  */
 public class RuleCard extends Card{
-    RuleCard(String fileName, String imageName, String title, String subtitle){
+    RuleCard(String fileName, String imageName, String title, String subtitle, int cardNo){
         this.fileName = fileName;
         this.imageName = imageName;
         this.title = title;
         this.subtitle = subtitle;
         this.isTrump = true;
+        this.cardNo = cardNo;
     }
 
 

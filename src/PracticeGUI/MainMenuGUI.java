@@ -10,6 +10,7 @@ public class MainMenuGUI extends JPanel implements ActionListener {
     //Set Buttons and Labels
     final int MIN_PLAYERS = 3;
     final int MAX_PLAYERS = 5;
+    int numPlayer;
     GridLayout mainMenuLayout = new GridLayout(5, 1);
     JLabel titleLable = new JLabel("Super Trumps!", SwingConstants.CENTER);
     JComboBox numPlayerSeletor = getNumPlayers(MIN_PLAYERS, MAX_PLAYERS);
@@ -49,9 +50,13 @@ public class MainMenuGUI extends JPanel implements ActionListener {
         newGameButt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
+                numPlayer = Integer.parseInt(String.format("%s",numPlayerSeletor.getSelectedItem()).split(" ")[0]);
+                new gameLogic(numPlayer);
                 cl.show(panelCont, "3");
             }
         });
+
+
 
         instructionsButt.addActionListener(new ActionListener() {
             @Override

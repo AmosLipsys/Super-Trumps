@@ -9,12 +9,13 @@ public class Card {
             economicValue, hardness, spGravity, occurrence, subtitle;
     double valueHardness, valueSpGravity, valueCleavage, valueCrustalAbundance, valueEconomicValue;
     boolean isTrump = false;
+    int cardNo;
     public Card() {
     }
 
     Card(String fileName, String imageName, String title, String chemistry, String classification,
          String crystalSystem, String occurrence, String hardness, String cleavage, String crustalAbundance,
-         String economicValue, String spGravity) {
+         String economicValue, String spGravity, int cardNo) {
         this.fileName = fileName;
         this.imageName = imageName;
         this.title = title;
@@ -27,6 +28,7 @@ public class Card {
         this.cleavage = cleavage;
         this.crustalAbundance = crustalAbundance;
         this.economicValue = economicValue;
+        this.cardNo = cardNo;
 
         setPropertyValues();
 

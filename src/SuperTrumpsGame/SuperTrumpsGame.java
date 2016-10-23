@@ -372,7 +372,6 @@ public class SuperTrumpsGame {
         for (Player player: players){
             player.setCards(superTrumpDeck, NUMBER_CARDS_TO_DEAL);
         }
-
     }
 
     public void showUserCards() {

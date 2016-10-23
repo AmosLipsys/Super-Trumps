@@ -93,9 +93,12 @@ public class Deck {
                         crustalAbundance = reader.readLine().replaceAll("\"","").replaceAll("crustal_abundance:","").replaceAll("\u00A0","").replaceAll(",","").trim();
                         economicValue = reader.readLine().replaceAll("\"","").replaceAll("economic_value:","").replaceAll("\u00A0","").replaceAll(",","").trim();
 
+                        // Card Number
+                        int cardNo = index +1;
+
                         // Make Card Class
                         stDeck.add(new Card(fileName, imageName, title, chemistry, classification, crystalSystem,
-                                occurrence, hardness, cleavage, crustalAbundance, economicValue, spGravity));
+                                occurrence, hardness, cleavage, crustalAbundance, economicValue, spGravity, cardNo));
 
 
                         // Increase index to make a new card
@@ -124,7 +127,7 @@ public class Deck {
                         subtitle = reader.readLine().replaceAll("\"", "").replaceAll("subtitle:", "").replaceAll("\u00A0", "").replaceAll(",", "").trim();
 
                         // Make Rule Card
-                        stDeck.add(new RuleCard(fileName, imageName, title, subtitle));
+                        stDeck.add(new RuleCard(fileName, imageName, title, subtitle, (index + 1) ));
 
                         // Display Rule Card
 //                        stDeck[index].display();
