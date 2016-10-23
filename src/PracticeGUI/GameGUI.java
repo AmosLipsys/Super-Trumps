@@ -1,7 +1,5 @@
 package PracticeGUI;
 
-import SuperTrumpsGame.Card;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +18,7 @@ public class GameGUI extends JPanel implements ActionListener {
     GridBagLayout gameLayout = new GridBagLayout();
 
     JLabel titleLable = new JLabel("Super Trumps!", SwingConstants.CENTER);
-    JLabel category = new JLabel("Category: None Selected Yet", SwingConstants.CENTER);
+    JLabel categoryLable = new JLabel("Category: None Selected Yet", SwingConstants.CENTER);
     JLabel cardLabel;
     JPanel cardButtPanel;
     JPanel buttonPanel = new JPanel(new GridLayout());
@@ -67,7 +65,7 @@ public class GameGUI extends JPanel implements ActionListener {
         statusScreen.setEditable(false);
         statusScreen.setFocusable(false);
         // Set Button Font
-        category.setFont(buttFont);
+        categoryLable.setFont(buttFont);
 
         // Get Default Card
         ImageIcon cardIcon = getImage(65);
@@ -109,7 +107,7 @@ public class GameGUI extends JPanel implements ActionListener {
 
         // Fill Panels with Features
         add(titleLable, titleConstraints);
-        add(category, categoryConstraints);
+        add(categoryLable, categoryConstraints);
         add(cardLabel, cardPickConstraints);
         add(cardSelector, cardSelectorConstraints);
         add(statusScreen, statusScreenConstraints);
@@ -124,6 +122,7 @@ public class GameGUI extends JPanel implements ActionListener {
                  for (Component button : cardButtPanel.getComponents()) {
                      button.setEnabled(true);
                  }
+                 cl.show(panelCont, "5");
                  validate();
                  repaint();
              }
@@ -140,31 +139,89 @@ public class GameGUI extends JPanel implements ActionListener {
 
                 // If no card have been dealt so far
                 if (!cardsDealt) {
+                    setInvalidCards(game.getCards(0), game, statusScreen);
                     cardsDealt = true;
-                    revalidate();
-                    repaint();
                 }
+
+                if (game.firstTurn){
+                    game.firstTurn = false;
+                    if(!(game.playerTurn == 0)){
+                        game.chooseRandCat();
+                        categoryLable.setText(game.currentCategory);
+                    }
+                    else{
+                        cl.show(panelCont, "4");
+                        game.currentCategory = game.pickCat(1);
+                        categoryLable.setText(game.currentCategory);
+                    }
+                    validate();
+                    repaint();
+                    game.makeAllValidCards();
+                }
+                else {
+                    game.validateCards();
+                }
+
                 // If AI Turn
                 if(!(game.playerTurn == 0)){
                     passButt.setText(String.format("Press to Continue", game.playerTurn));
-                    statusScreen.setText(String.format("It's A.I. No:%s Turn", game.playerTurn));
-                    setInvalidCards(game.getCards(0),game);
+                    statusScreen.setText(String.format("A.I. No:%s took it's turn", game.playerTurn));
 
+                    if(game.hasValidCards){
+                        game.pickRandomValidCard();
+                        cardLabel.setIcon(getImage(game.currentCard.cardNo));
+                        validate();
+                        repaint();
+                    }
+                    else{
+                        // AI PASS
+                    }
                 }
                 // If it's a Player turn
+                // Player Passes
+                else if(passButt.getText().equals("Pass")){
+                    Card newCard = game.players.get(0).getNewCard(game.superTrumpDeck);
+                    cardButtPanel.add(createCardButt(newCard.cardNo, game, statusScreen));
+                    validate();
+                    repaint();
+                }
                 else{
                     passButt.setText("Pass");
                     statusScreen.setText("It's Your Turn");
-
-                    setValidCards(game.getCards(0),game);
+                    setValidAndInvalidCards(game);
                 }
+                categoryLable.setText(game.currentCategory);
+                game.nextPlayer();
 
                 // Reset Screen
                 revalidate();
                 repaint();
                 passButt.setEnabled(true);
+
+                if (!(game.keepPlaying)){
+                    cl.show(panelCont, "5");
+                }
             }
         });
+    }
+
+
+    public void setValidAndInvalidCards(GameLogic game){
+        int counter = 0;
+        for (Component button : cardButtPanel.getComponents()) {
+
+            if(game.players.get(0).playersCards.get(counter).isValid){
+                button.setEnabled(true);
+            }
+            else{
+                button.setEnabled(false);
+            }
+            counter++;
+
+        }
+
+
+
     }
 
     public void setAllCardsValid(){
@@ -177,7 +234,7 @@ public class GameGUI extends JPanel implements ActionListener {
 
     public void setAllCardsInvalid(){
         for (Component button : cardButtPanel.getComponents()) {
-            button.setEnabled(true);
+            button.setEnabled(false);
         }
         validate();
         repaint();
@@ -187,31 +244,37 @@ public class GameGUI extends JPanel implements ActionListener {
 
 
 
-    public void setValidCards(ArrayList<Card> playersCards, GameLogic game){
+    public void setValidCards(ArrayList<Card> playersCards, GameLogic game,JTextArea statusScreen){
 
         for(Card card:playersCards) {
-            cardButtPanel.add(createCardButt(card.getCardNo(), game));
+            cardButtPanel.add(createCardButt(card.getCardNo(), game, statusScreen));
         }
     }
 
-    public void setInvalidCards(ArrayList<Card> playersCards, GameLogic game){
+    public void setInvalidCards(ArrayList<Card> playersCards, GameLogic game, JTextArea statusScreen){
         for(Card card:playersCards) {
-            cardButtPanel.add(createInvalidCardButt(card.getCardNo(), game));
+            cardButtPanel.add(createInvalidCardButt(card.getCardNo(), game, statusScreen));
         }
     }
 
-
-
-    public JButton createCardButt (int cardNo, GameLogic game) {
+    public JButton createCardButt (int cardNo, GameLogic game, JTextArea statusScreen) {
         ImageIcon cardIcon = getImage(cardNo);
         JButton cardButt = new JButton(cardIcon);
         cardButt.setEnabled(true);
         cardButt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
+
                 game.userPlays(cardNo);
                 cardLabel.setIcon(getImage(cardNo));
                 cardButtPanel.remove(cardButt);
+
+
+                game.nextPlayer();
+
+                passButt.setText("Continue");
+                statusScreen.setText("You play a card");
+                setAllCardsInvalid();
                 revalidate();
                 repaint();
             }
@@ -219,25 +282,31 @@ public class GameGUI extends JPanel implements ActionListener {
         return cardButt;
     }
 
-    JButton createInvalidCardButt(int cardNo, GameLogic game){
-        JButton invalidCardButt = createCardButt(cardNo, game);
+    JButton createInvalidCardButt(int cardNo, GameLogic game, JTextArea status){
+        JButton invalidCardButt = createCardButt(cardNo, game, status);
         invalidCardButt.setEnabled(false);
         revalidate();
         repaint();
         return invalidCardButt;
     }
 
-    public void setCategory(String categoryText) {
-        category.setText(categoryText);
+
+    public void setCategoryLable(String categoryText) {
+        categoryLable.setText(categoryText);
     }
 
     public void setPassButtText(String passText){
         passButt.setText(passText);
     }
 
+    public void selectACategory(CardLayout cl, JPanel panelCont){
+        cl.show(panelCont, "4");
+    }
+
+
     ImageIcon getImage(int imageNum){
 
-        String filePath = "C:\\Users\\jc299390\\Desktop\\Super-Trumps\\images\\Slide" +
+        String filePath = "C:\\Users\\Amos\\Desktop\\Super Trumps\\images\\Slide" +
                 String.format("%02d",imageNum) + ".jpg" ;
 
         BufferedImage myPicture = null;

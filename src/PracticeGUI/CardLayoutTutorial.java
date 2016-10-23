@@ -9,6 +9,8 @@ public class CardLayoutTutorial {
 	JPanel panelCont = new JPanel();
 	JPanel mainMenuPanel = new JPanel();
 	JPanel instructionsPanel = new JPanel();
+	JPanel categorySelectPanel = new JPanel();
+	JPanel scoreboardPanel = new JPanel();
 	JPanel gamePanel = new JPanel();
 	CardLayout cl = new CardLayout();
 	JTextArea statusScreen = new JTextArea(2,20);
@@ -36,10 +38,14 @@ public class CardLayoutTutorial {
 		gamePanel.add(new GameGUI(cl, panelCont, game, statusScreen) );
 		mainMenuPanel.add(new MainMenuGUI(cl, panelCont, game, statusScreen));
 		instructionsPanel.add(new InstructionsGUI(cl, panelCont) );
+		categorySelectPanel.add(new selectCategory(cl, panelCont, game));
+		scoreboardPanel.add(new Scoreboard(cl, panelCont, game));
 
 		panelCont.add(mainMenuPanel, "1");
 		panelCont.add(instructionsPanel, "2");
 		panelCont.add(gamePanel,"3");
+		panelCont.add(categorySelectPanel,"4");
+		panelCont.add(scoreboardPanel,"5");
 
 		// Show default as Main Menu
 		cl.show(panelCont, "1");
@@ -61,5 +67,7 @@ public class CardLayoutTutorial {
 			}
 		});
 	}
+
+
 
 }

@@ -1,8 +1,5 @@
 package PracticeGUI;
 
-import SuperTrumpsGame.Card;
-import SuperTrumpsGame.Deck;
-import SuperTrumpsGame.Player;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -12,16 +9,16 @@ import java.util.Random;
  * Created by jc299390 on 23/10/16.
  */
 public class GameLogic {
-    JFrame frame;
-    boolean firstTurn = true;
-    String dealerString;
-    private static final int NUMBER_CARDS_TO_DEAL = 8;
-    int numPlayers, dealerId, playerTurn, playerPassed, lastPlayer;
-    private ArrayList<Player> players;
-    private ArrayList<Integer> winners = new ArrayList<>();
-    private Deck superTrumpDeck = new Deck();
-    String currentCategory;
-    Card currentCard;
+    public JFrame frame;
+    public boolean firstTurn = true, hasValidCards, keepPlaying = true;
+    public String dealerString;
+    public  static final int NUMBER_CARDS_TO_DEAL = 8;
+    public int numPlayers, dealerId, playerTurn, playerPassed, lastPlayer;
+    public  ArrayList<Player> players;
+    public  ArrayList<Integer> winners = new ArrayList<>();
+    public  Deck superTrumpDeck = new Deck();
+    public String currentCategory;
+    Card currentCard = null;
 
     GameLogic(){
     }
@@ -37,10 +34,17 @@ public class GameLogic {
     }
 
     public void userPlays(int cardNo){
-        players.get(0).playCard(cardNo);
-
+        Card playedCard = players.get(0).playCard(cardNo);
+        if (playedCard.isTrump){
+            String changeCategory = playedCard.getTrumpType();
+            if (changeCategory.equals("Any Category")) {
+                chooseRandCat();
+            }
+            else {
+                currentCategory = changeCategory;
+            }
+        }
     }
-
 
     public static void main(String[] args){
         new GameLogic(3);
@@ -50,12 +54,6 @@ public class GameLogic {
     GameLogic(int numOfPlayers){
         selectDealer(numOfPlayers);
         dealRandomCards(numOfPlayers);
-
-
-        System.out.print(players);
-//        showAllUserCards();
-//        round();
-
     }
 
     public int getPlayerTurn(){
@@ -100,25 +98,99 @@ public class GameLogic {
         playerTurn = (dealerId + 1) % numPlayers;
     }
 
-    public void validateCards(){
+
+
+    public void makeAllValidCards(){
         //find valid cards and separate them;
         for (Card unauditedCard : players.get(playerTurn).playersCards) {
-            unauditedCard.isValid = ((isHigher(currentCard, unauditedCard)) || unauditedCard.isTrump || currentCard.isTrump) || currentCard == null;
+            unauditedCard.isValid = true;
+            hasValidCards = true;
         }
     }
+
+    public void validateCards(){
+        hasValidCards = false;
+        //find valid cards and separate them;
+        players.get(playerTurn).setPassed(true);
+
+        for (Card unauditedCard : players.get(playerTurn).playersCards) {
+            unauditedCard.isValid = currentCard == null || ((isHigher(currentCard, unauditedCard)) || unauditedCard.isTrump || currentCard.isTrump);
+            if (unauditedCard.isValid) {
+                players.get(playerTurn).setPassed(false);
+                hasValidCards = true;
+            }
+        }
+    }
+
+
+    public Card pickRandomValidCard(){
+        for (Card unauditedCard : players.get(playerTurn).playersCards) {
+            if(unauditedCard.isValid){
+                currentCard = unauditedCard;
+                players.get(playerTurn).playersCards.remove(currentCard);
+                trumpTest(currentCard);
+                return currentCard;
+            }
+        }
+        return null;
+    }
+
+    public void trumpTest(Card card){
+        if(card.isTrump){
+            String changeOfCategory = card.getTrumpType();
+            if (changeOfCategory.equals("Any Category")) {
+                chooseRandCat();
+            }
+            else {
+                currentCategory = changeOfCategory;
+            }
+        }
+
+    }
+
+    public void nextPlayer(){
+
+        // If game hasn't finished
+        if (winners.size() + 1 < numPlayers){
+            // If 2 players haven't passed
+             if((playerPassed + 1) < numPlayers) {
+                 // Look for new player
+                 playerTurn = (playerTurn + 1) % numPlayers;
+                 while ((players.get(playerTurn).passed) || (players.get(playerTurn).outOfCards )){
+                     playerTurn = (playerTurn + 1) % numPlayers;
+                 }
+             }
+             else {
+                 // Set up new game
+                 for (Player player : players) {
+                     player.passed = false;
+                     firstTurn = true;
+                     while ((players.get(playerTurn).passed) || (players.get(playerTurn).outOfCards)) {
+                         playerTurn = (playerTurn + 1) % numPlayers;
+                     }
+                 }
+             }
+        }
+        else{
+            keepPlaying = false;
+        }
+    }
+
+
+
 
     boolean isHigher(Card lastCard, Card potentialCard){
         return lastCard.getAttributeValue(currentCategory) < potentialCard.getAttributeValue(currentCategory);
 
     }
 
-    private void chooseRandCat() {
+    public void chooseRandCat() {
         Random rand = new Random();
         int selection = rand.nextInt(5) + 1;
         pickCat(selection);
     }
 
-    private void pickCat(int selection){
+    public String pickCat(int selection){
         switch (selection) {
             case 1:
                 currentCategory = "Hardness";
@@ -136,7 +208,13 @@ public class GameLogic {
                 currentCategory = "Economic Value";
                 break;
         }
+        return currentCategory;
     }
+
+
+
+
+
 
 
 }

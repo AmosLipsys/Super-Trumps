@@ -101,7 +101,7 @@ public class InstructionsGUI extends JPanel implements ActionListener  {
 
     ImageIcon getImage(int imageNum){
 
-        String filePath = "C:\\Users\\jc299390\\Desktop\\Super-Trumps\\images\\Slide" +
+        String filePath = "C:\\Users\\Amos\\Desktop\\Super Trumps\\images\\Slide" +
                 String.format("%02d",imageNum) + ".jpg" ;
 
         BufferedImage myPicture = null;

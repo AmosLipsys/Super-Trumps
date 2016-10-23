@@ -1,7 +1,5 @@
 package PracticeGUI;
 
-import SuperTrumpsGame.Card;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -59,8 +57,6 @@ public class MainMenuGUI extends JPanel implements ActionListener {
                 game.dealRandomCards(numPlayer);
                 statusScreen.setText(game.getDealerString());
                 cl.show(panelCont, "3");
-
-
             }
         });
 
