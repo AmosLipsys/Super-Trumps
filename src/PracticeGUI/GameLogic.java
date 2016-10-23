@@ -5,14 +5,13 @@ import SuperTrumpsGame.Deck;
 import SuperTrumpsGame.Player;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
 /**
  * Created by jc299390 on 23/10/16.
  */
-public class gameLogic{
+public class GameLogic {
     JFrame frame;
     String dealerString;
     private static final int NUMBER_CARDS_TO_DEAL = 8;
@@ -23,23 +22,48 @@ public class gameLogic{
     String currentCategory;
     Card currentCard;
 
-
-    public static void main(String[] args){
-        new gameLogic(3);
+    GameLogic(){
     }
 
-
-    gameLogic(int numOfPlayers){
-        selectDealer(numOfPlayers);
+    public void NewGame(){
+        selectDealer(numPlayers);
         displayDealer();
-        dealRandomCards(numOfPlayers);
+        dealRandomCards(numPlayers);
+
         System.out.print(players);
 //        showAllUserCards();
 //        round();
 
     }
 
-    private void displayDealer() {
+
+    public static void main(String[] args){
+        new GameLogic(3);
+    }
+
+
+    GameLogic(int numOfPlayers){
+        selectDealer(numOfPlayers);
+        displayDealer();
+        dealRandomCards(numOfPlayers);
+
+
+        System.out.print(players);
+//        showAllUserCards();
+//        round();
+
+    }
+
+    public int getPlayerTurn(){
+        return this.playerTurn;
+    }
+
+    ArrayList<Card> getCards(int playerNo){
+        return players.get(playerNo).playersCards;
+    }
+
+
+    public void displayDealer() {
         JOptionPane.showMessageDialog(frame,dealerString,
                 "The Dealer",
                 JOptionPane.PLAIN_MESSAGE);

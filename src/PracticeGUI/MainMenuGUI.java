@@ -1,5 +1,7 @@
 package PracticeGUI;
 
+import SuperTrumpsGame.Card;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -23,7 +25,7 @@ public class MainMenuGUI extends JPanel implements ActionListener {
     Font buttFont = new Font("Verdana", Font.BOLD, 30);
 
 
-    MainMenuGUI(CardLayout cl, JPanel panelCont) {
+    MainMenuGUI(CardLayout cl, JPanel panelCont, GameLogic game, JPanel gamePanel) {
         setBackground(Color.red);
 
         // Set Background Colour
@@ -50,11 +52,18 @@ public class MainMenuGUI extends JPanel implements ActionListener {
         newGameButt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
+                // Checks Player Number Selector and Saves Value
                 numPlayer = Integer.parseInt(String.format("%s",numPlayerSeletor.getSelectedItem()).split(" ")[0]);
-                new gameLogic(numPlayer);
+                game.numPlayers = numPlayer;
+                game.selectDealer(numPlayer);
+                game.displayDealer();
+                game.dealRandomCards(numPlayer);
+
                 cl.show(panelCont, "3");
             }
         });
+
+
 
 
 

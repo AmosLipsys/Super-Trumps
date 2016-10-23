@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class Instruct extends JPanel implements ActionListener {
     //Set Buttons and Labels
-//Set Font
+    //Set Font
     Font titleFont = new Font("Verdana", Font.BOLD, 40);
     Font buttFont = new Font("Verdana", Font.BOLD, 30);
     JButton page1Butt = new JButton("Page 1");

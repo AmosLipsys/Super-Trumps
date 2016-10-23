@@ -1,13 +1,15 @@
 package PracticeGUI;
 
+import SuperTrumpsGame.Card;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -23,8 +25,9 @@ public class GameGUI extends JPanel implements ActionListener {
     JLabel cardLabel;
     JPanel cardButtPanel;
     JPanel buttonPanel = new JPanel(new GridLayout());
+    boolean cardsDealt = false;
 
-    JButton passButt = new JButton("Pass");
+    JButton passButt = new JButton("Get Cards");
     JButton finishButt = new JButton("Finish The Game!");
 
     GridBagConstraints titleConstraints = new GridBagConstraints();
@@ -39,7 +42,7 @@ public class GameGUI extends JPanel implements ActionListener {
     Font buttFont = new Font("Verdana", Font.BOLD, 30);
 
 
-    GameGUI(CardLayout cl, JPanel panelCont){
+    GameGUI(CardLayout cl, JPanel panelCont, GameLogic game){
         //Set Layout, size ect
         setLayout(gameLayout);
         setSize(1800, 1000);
@@ -61,9 +64,6 @@ public class GameGUI extends JPanel implements ActionListener {
 
 
         cardButtPanel = new JPanel();
-        cardButtPanel.add(createCardButt(ThreadLocalRandom.current().nextInt(1, 54 + 1)));
-        cardButtPanel.add(createInvalidCardButt(ThreadLocalRandom.current().nextInt(1, 54 + 1)));
-        cardButtPanel.add(createCardButt(ThreadLocalRandom.current().nextInt(1, 54 + 1)));
         JScrollPane cardSelector = new JScrollPane(cardButtPanel);
         cardSelector.setPreferredSize(new Dimension(600,340));
         cardSelector.createHorizontalScrollBar();
@@ -102,19 +102,36 @@ public class GameGUI extends JPanel implements ActionListener {
 
         add(buttonPanel, buttonPanelConstraints);
 
+
+
+
         passButt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-
-                cardButtPanel.add(createCardButt(ThreadLocalRandom.current().nextInt(1, 54 + 1)));
-
-                cardButtPanel.getComponents();
-                revalidate();
-                repaint();
-
+                passButt.setEnabled(false);
+                if (cardsDealt) {
+                    cardButtPanel.add(createCardButt(ThreadLocalRandom.current().nextInt(1, 54 + 1)));
+                    cardButtPanel.getComponents();
+                    revalidate();
+                    repaint();
+                }
+                else{
+                    setCards(game.getCards(0));
+                    revalidate();
+                    repaint();
+                    cardsDealt = true;
+                    passButt.setText("Pass");
+                }
             }
         });
     }
+
+    public void setCards(ArrayList<Card> playersCards){
+        for(Card card:playersCards) {
+            cardButtPanel.add(createCardButt(card.getCardNo()));
+        }
+    }
+
 
 
     JButton createCardButt (int cardNo) {
@@ -132,6 +149,10 @@ public class GameGUI extends JPanel implements ActionListener {
         });
         return cardButt;
     }
+
+
+
+
 
     JButton createInvalidCardButt(int cardNo){
         JButton invalidCardButt = createCardButt(cardNo);

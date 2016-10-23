@@ -2,10 +2,9 @@ package PracticeGUI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class CardLayoutTutorial {
+	GameLogic game = new GameLogic();
 	JFrame frame = new JFrame("Super Trumps");
 	JPanel panelCont = new JPanel();
 	JPanel mainMenuPanel = new JPanel();
@@ -33,9 +32,9 @@ public class CardLayoutTutorial {
 		panelCont.setLayout(cl);
 
 		// Add Panels to the card layout list and set number
-		mainMenuPanel.add(new MainMenuGUI(cl, panelCont));
+		gamePanel.add(new GameGUI(cl, panelCont, game) );
+		mainMenuPanel.add(new MainMenuGUI(cl, panelCont, game, gamePanel));
 		instructionsPanel.add(new InstructionsGUI(cl, panelCont) );
-		gamePanel.add(new GameGUI(cl, panelCont) );
 
 		panelCont.add(mainMenuPanel, "1");
 		panelCont.add(instructionsPanel, "2");
@@ -50,7 +49,7 @@ public class CardLayoutTutorial {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
-		
+
 	}
 
 	public static void main(String[] args) {

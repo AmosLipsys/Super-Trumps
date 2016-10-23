@@ -194,6 +194,10 @@ public class Card {
 
     }
 
+    public int getCardNo(){
+        return this.cardNo;
+    }
+
     void displayNameCatVal(String category, int playersTurn) {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println(String.format("Title: %-10s \nCategory: %s - %s",

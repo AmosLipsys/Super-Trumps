@@ -7,8 +7,8 @@ import java.util.ArrayList;
  */
 public class Player {
     boolean passed, outOfCards;
-    ArrayList<Card> playersCards = new ArrayList<Card>();
-    ArrayList<Card> validPlayersCards = new ArrayList<Card>();
+    public ArrayList<Card> playersCards = new ArrayList<Card>();
+    public ArrayList<Card> validPlayersCards = new ArrayList<Card>();
     public void Player() {
         passed = false;
         outOfCards = false;
