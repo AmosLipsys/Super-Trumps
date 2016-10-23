@@ -34,8 +34,12 @@ public class Player {
     }
 
     public Card playCard(int cardNo){
-        Card selectedCard = validPlayersCards.get(cardNo);
-        validPlayersCards.remove(selectedCard);
+        Card selectedCard = new Card();
+        for(Card card: playersCards){
+            if (card.cardNo==cardNo){
+                selectedCard = card;
+            }
+        }
         playersCards.remove(selectedCard);
         return selectedCard;
     }

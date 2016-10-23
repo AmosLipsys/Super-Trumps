@@ -13,6 +13,7 @@ import java.util.Random;
  */
 public class GameLogic {
     JFrame frame;
+    boolean firstTurn = true;
     String dealerString;
     private static final int NUMBER_CARDS_TO_DEAL = 8;
     int numPlayers, dealerId, playerTurn, playerPassed, lastPlayer;
@@ -27,12 +28,16 @@ public class GameLogic {
 
     public void NewGame(){
         selectDealer(numPlayers);
-        displayDealer();
         dealRandomCards(numPlayers);
 
         System.out.print(players);
 //        showAllUserCards();
 //        round();
+
+    }
+
+    public void userPlays(int cardNo){
+        players.get(0).playCard(cardNo);
 
     }
 
@@ -44,7 +49,6 @@ public class GameLogic {
 
     GameLogic(int numOfPlayers){
         selectDealer(numOfPlayers);
-        displayDealer();
         dealRandomCards(numOfPlayers);
 
 
@@ -63,10 +67,8 @@ public class GameLogic {
     }
 
 
-    public void displayDealer() {
-        JOptionPane.showMessageDialog(frame,dealerString,
-                "The Dealer",
-                JOptionPane.PLAIN_MESSAGE);
+    public String getDealerString() {
+        return dealerString;
     }
 
 
@@ -97,5 +99,44 @@ public class GameLogic {
         // First players turn is left of dealer (this may wrap to first user)
         playerTurn = (dealerId + 1) % numPlayers;
     }
+
+    public void validateCards(){
+        //find valid cards and separate them;
+        for (Card unauditedCard : players.get(playerTurn).playersCards) {
+            unauditedCard.isValid = ((isHigher(currentCard, unauditedCard)) || unauditedCard.isTrump || currentCard.isTrump) || currentCard == null;
+        }
+    }
+
+    boolean isHigher(Card lastCard, Card potentialCard){
+        return lastCard.getAttributeValue(currentCategory) < potentialCard.getAttributeValue(currentCategory);
+
+    }
+
+    private void chooseRandCat() {
+        Random rand = new Random();
+        int selection = rand.nextInt(5) + 1;
+        pickCat(selection);
+    }
+
+    private void pickCat(int selection){
+        switch (selection) {
+            case 1:
+                currentCategory = "Hardness";
+                break;
+            case 2:
+                currentCategory = "Specific Gravity";
+                break;
+            case 3:
+                currentCategory = "Cleavage";
+                break;
+            case 4:
+                currentCategory = "Crustal Abundance";
+                break;
+            case 5:
+                currentCategory = "Economic Value";
+                break;
+        }
+    }
+
 
 }

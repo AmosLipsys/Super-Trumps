@@ -8,7 +8,7 @@ public class Card {
     String fileName, imageName, title, classification, crystalSystem, chemistry, cleavage, crustalAbundance,
             economicValue, hardness, spGravity, occurrence, subtitle;
     double valueHardness, valueSpGravity, valueCleavage, valueCrustalAbundance, valueEconomicValue;
-    boolean isTrump = false;
+    public boolean isTrump = false, isValid;
     int cardNo;
     public Card() {
     }
@@ -29,6 +29,7 @@ public class Card {
         this.crustalAbundance = crustalAbundance;
         this.economicValue = economicValue;
         this.cardNo = cardNo;
+
 
         setPropertyValues();
 
@@ -163,7 +164,7 @@ public class Card {
         return "";
     }
 
-    double getAttributeValue(String attribute){
+    public double getAttributeValue(String attribute){
         switch (attribute) {
             case "Hardness":
                 return valueHardness;

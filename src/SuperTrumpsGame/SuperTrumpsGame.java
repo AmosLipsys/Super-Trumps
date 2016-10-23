@@ -272,15 +272,18 @@ public class SuperTrumpsGame {
     }
 
 
-    private void validateCards(){
+    public void validateCards(){
         //find valid cards and separate them;
         for (Card unauditedCard : players.get(playerTurn).playersCards) {
-            if((isHigher(currentCard, unauditedCard)) || unauditedCard.isTrump || currentCard.isTrump){
-                players.get(playerTurn).validPlayersCards.add(unauditedCard);
-            }
+            unauditedCard.isValid = ((isHigher(currentCard, unauditedCard)) || unauditedCard.isTrump || currentCard.isTrump) || currentCard == null;
         }
-        players.get(playerTurn).playersCards.removeAll(players.get(playerTurn).validPlayersCards);
+    }
 
+    public void validateCards(int playerTurn){
+        //find valid cards and separate them;
+        for (Card unauditedCard : players.get(playerTurn).playersCards) {
+            unauditedCard.isValid = ((isHigher(currentCard, unauditedCard)) || unauditedCard.isTrump || currentCard.isTrump) || currentCard == null;
+        }
     }
 
     boolean isHigher(Card lastCard, Card potentialCard){

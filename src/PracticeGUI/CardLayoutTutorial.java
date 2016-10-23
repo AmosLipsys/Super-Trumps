@@ -11,6 +11,7 @@ public class CardLayoutTutorial {
 	JPanel instructionsPanel = new JPanel();
 	JPanel gamePanel = new JPanel();
 	CardLayout cl = new CardLayout();
+	JTextArea statusScreen = new JTextArea(2,20);
 
 	public CardLayoutTutorial() {
 
@@ -32,8 +33,8 @@ public class CardLayoutTutorial {
 		panelCont.setLayout(cl);
 
 		// Add Panels to the card layout list and set number
-		gamePanel.add(new GameGUI(cl, panelCont, game) );
-		mainMenuPanel.add(new MainMenuGUI(cl, panelCont, game, gamePanel));
+		gamePanel.add(new GameGUI(cl, panelCont, game, statusScreen) );
+		mainMenuPanel.add(new MainMenuGUI(cl, panelCont, game, statusScreen));
 		instructionsPanel.add(new InstructionsGUI(cl, panelCont) );
 
 		panelCont.add(mainMenuPanel, "1");

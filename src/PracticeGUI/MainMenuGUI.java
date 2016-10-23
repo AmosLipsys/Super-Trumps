@@ -25,7 +25,7 @@ public class MainMenuGUI extends JPanel implements ActionListener {
     Font buttFont = new Font("Verdana", Font.BOLD, 30);
 
 
-    MainMenuGUI(CardLayout cl, JPanel panelCont, GameLogic game, JPanel gamePanel) {
+    MainMenuGUI(CardLayout cl, JPanel panelCont, GameLogic game, JTextArea statusScreen) {
         setBackground(Color.red);
 
         // Set Background Colour
@@ -56,10 +56,11 @@ public class MainMenuGUI extends JPanel implements ActionListener {
                 numPlayer = Integer.parseInt(String.format("%s",numPlayerSeletor.getSelectedItem()).split(" ")[0]);
                 game.numPlayers = numPlayer;
                 game.selectDealer(numPlayer);
-                game.displayDealer();
                 game.dealRandomCards(numPlayer);
-
+                statusScreen.setText(game.getDealerString());
                 cl.show(panelCont, "3");
+
+
             }
         });
 

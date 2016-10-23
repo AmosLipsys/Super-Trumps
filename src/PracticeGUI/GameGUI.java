@@ -10,7 +10,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by Amos on 23-Oct-16.
@@ -35,6 +34,8 @@ public class GameGUI extends JPanel implements ActionListener {
     GridBagConstraints cardPickConstraints = new GridBagConstraints();
     GridBagConstraints cardSelectorConstraints = new GridBagConstraints();
     GridBagConstraints buttonPanelConstraints = new GridBagConstraints();
+    GridBagConstraints statusScreenConstraints = new GridBagConstraints();
+
 
 
     //Set Font
@@ -42,7 +43,8 @@ public class GameGUI extends JPanel implements ActionListener {
     Font buttFont = new Font("Verdana", Font.BOLD, 30);
 
 
-    GameGUI(CardLayout cl, JPanel panelCont, GameLogic game){
+    GameGUI(CardLayout cl, JPanel panelCont, GameLogic game, JTextArea statusScreen){
+
         //Set Layout, size ect
         setLayout(gameLayout);
         setSize(1800, 1000);
@@ -55,6 +57,15 @@ public class GameGUI extends JPanel implements ActionListener {
         // Set Title Font And Colour
         titleLable.setFont(titleFont);
         titleLable.setForeground(Color.white);
+        statusScreen.setFont(buttFont);
+        statusScreen.setMaximumSize(new Dimension(300, 200));
+        statusScreen.setText(game.getDealerString());
+        statusScreen.setForeground(Color.white);
+        statusScreen.setWrapStyleWord(true);
+        statusScreen.setLineWrap(true);
+        statusScreen.setOpaque(false);
+        statusScreen.setEditable(false);
+        statusScreen.setFocusable(false);
         // Set Button Font
         category.setFont(buttFont);
 
@@ -86,6 +97,9 @@ public class GameGUI extends JPanel implements ActionListener {
         buttonPanelConstraints.gridy = 5;
         buttonPanelConstraints.fill = GridBagConstraints.HORIZONTAL;
         passButt.setFont(buttFont);
+        // Status Screen
+        statusScreenConstraints.gridx = 0;
+        statusScreenConstraints.gridy = 6;
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -98,49 +112,104 @@ public class GameGUI extends JPanel implements ActionListener {
         add(category, categoryConstraints);
         add(cardLabel, cardPickConstraints);
         add(cardSelector, cardSelectorConstraints);
+        add(statusScreen, statusScreenConstraints);
 
 
         add(buttonPanel, buttonPanelConstraints);
 
+
+        finishButt.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent arg0) {
+                 for (Component button : cardButtPanel.getComponents()) {
+                     button.setEnabled(true);
+                 }
+                 validate();
+                 repaint();
+             }
+         });
 
 
 
         passButt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
+
+                // Pause Button
                 passButt.setEnabled(false);
-                if (cardsDealt) {
-                    cardButtPanel.add(createCardButt(ThreadLocalRandom.current().nextInt(1, 54 + 1)));
-                    cardButtPanel.getComponents();
-                    revalidate();
-                    repaint();
-                }
-                else{
-                    setCards(game.getCards(0));
-                    revalidate();
-                    repaint();
+
+                // If no card have been dealt so far
+                if (!cardsDealt) {
                     cardsDealt = true;
-                    passButt.setText("Pass");
+                    revalidate();
+                    repaint();
                 }
+                // If AI Turn
+                if(!(game.playerTurn == 0)){
+                    passButt.setText(String.format("Press to Continue", game.playerTurn));
+                    statusScreen.setText(String.format("It's A.I. No:%s Turn", game.playerTurn));
+                    setInvalidCards(game.getCards(0),game);
+
+                }
+                // If it's a Player turn
+                else{
+                    passButt.setText("Pass");
+                    statusScreen.setText("It's Your Turn");
+
+                    setValidCards(game.getCards(0),game);
+                }
+
+                // Reset Screen
+                revalidate();
+                repaint();
+                passButt.setEnabled(true);
             }
         });
     }
 
-    public void setCards(ArrayList<Card> playersCards){
+    public void setAllCardsValid(){
+        for (Component button : cardButtPanel.getComponents()) {
+            button.setEnabled(true);
+        }
+        validate();
+        repaint();
+    }
+
+    public void setAllCardsInvalid(){
+        for (Component button : cardButtPanel.getComponents()) {
+            button.setEnabled(true);
+        }
+        validate();
+        repaint();
+    }
+
+
+
+
+
+    public void setValidCards(ArrayList<Card> playersCards, GameLogic game){
+
         for(Card card:playersCards) {
-            cardButtPanel.add(createCardButt(card.getCardNo()));
+            cardButtPanel.add(createCardButt(card.getCardNo(), game));
+        }
+    }
+
+    public void setInvalidCards(ArrayList<Card> playersCards, GameLogic game){
+        for(Card card:playersCards) {
+            cardButtPanel.add(createInvalidCardButt(card.getCardNo(), game));
         }
     }
 
 
 
-    JButton createCardButt (int cardNo) {
+    public JButton createCardButt (int cardNo, GameLogic game) {
         ImageIcon cardIcon = getImage(cardNo);
         JButton cardButt = new JButton(cardIcon);
         cardButt.setEnabled(true);
         cardButt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
+                game.userPlays(cardNo);
                 cardLabel.setIcon(getImage(cardNo));
                 cardButtPanel.remove(cardButt);
                 revalidate();
@@ -150,12 +219,8 @@ public class GameGUI extends JPanel implements ActionListener {
         return cardButt;
     }
 
-
-
-
-
-    JButton createInvalidCardButt(int cardNo){
-        JButton invalidCardButt = createCardButt(cardNo);
+    JButton createInvalidCardButt(int cardNo, GameLogic game){
+        JButton invalidCardButt = createCardButt(cardNo, game);
         invalidCardButt.setEnabled(false);
         revalidate();
         repaint();
