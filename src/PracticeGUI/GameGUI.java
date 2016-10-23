@@ -20,6 +20,8 @@ public class GameGUI extends JPanel implements ActionListener {
     JLabel titleLable = new JLabel("Super Trumps!", SwingConstants.CENTER);
     JLabel category = new JLabel("Category: None Selected Yet", SwingConstants.CENTER);
     JLabel cardLabel;
+    JPanel cardButtPanel;
+    JButton card = new JButton();
 
     JButton passButt = new JButton("Pass");
 
@@ -28,6 +30,7 @@ public class GameGUI extends JPanel implements ActionListener {
     GridBagConstraints cardPickConstraints = new GridBagConstraints();
     GridBagConstraints cardSelectorConstraints = new GridBagConstraints();
     GridBagConstraints passButtConstraints = new GridBagConstraints();
+
 
     //Set Font
     Font titleFont = new Font("Verdana", Font.BOLD, 80);
@@ -73,9 +76,14 @@ public class GameGUI extends JPanel implements ActionListener {
                 "\n" +
                 "Certainty listening no no behaviour existence assurance situation is. Because add why not esteems amiable him. Interested the unaffected mrs law friendship add principles. Indeed on people do merits to. Court heard which up above hoped grave do. Answer living law things either sir bed length. Looked before we an on merely. These no death he at share alone. Yet outward the him compass hearted are tedious. \n"
         );
-                JScrollPane cardSelector = new JScrollPane(text);
-                cardSelector.setPreferredSize(new Dimension(600,200));
-                cardSelector.createHorizontalScrollBar();
+        cardButtPanel = new JPanel();
+        cardButtPanel.add(createCardButt(1));
+        cardButtPanel.add(createCardButt(2));
+        cardButtPanel.add(createCardButt(3));
+        JScrollPane cardSelector = new JScrollPane(cardButtPanel);
+        cardSelector.setPreferredSize(new Dimension(600,340));
+        cardSelector.createHorizontalScrollBar();
+
         // ~~~~~~~~~Set Constraints
         // Title
         titleConstraints.gridx = 0;
@@ -101,12 +109,10 @@ public class GameGUI extends JPanel implements ActionListener {
         add(cardSelector, cardSelectorConstraints);
         add(passButt, passButtConstraints);
 
-
-
-
         passButt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
+
                 cl.show(panelCont, "2");
             }
         });
@@ -115,6 +121,22 @@ public class GameGUI extends JPanel implements ActionListener {
 
 
 
+
+
+
+    }
+
+    JButton createCardButt(int cardNo){
+        ImageIcon cardIcon = getImage(cardNo);
+        JButton cardButt = new JButton(cardIcon);
+        cardButt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                remove(cardButt);
+            }
+        });
+
+        return cardButt;
 
     }
 
@@ -138,6 +160,7 @@ public class GameGUI extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
 
     }
 }
